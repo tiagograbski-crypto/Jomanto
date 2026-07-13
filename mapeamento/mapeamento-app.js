@@ -224,14 +224,24 @@ export function createMapeamentoApp({ document, window }) {
         document.body ? document.body.scrollHeight : 0,
       );
     }
-    const viewportCap = Math.min(680, Math.round(window.innerHeight * 0.85));
+
     if (mode === 'complete') {
       const wizard = document.getElementById('dossier-embed-wizard');
       if (wizard && !wizard.classList.contains('view-hidden')) {
-        return Math.min(wizard.offsetHeight + 8, viewportCap);
+        return wizard.scrollHeight;
+      }
+      const dossier = document.getElementById('view-dossier');
+      if (dossier && !dossier.classList.contains('view-hidden')) {
+        return dossier.scrollHeight;
       }
     }
-    return viewportCap;
+
+    const funnel = document.getElementById('view-funnel');
+    if (funnel && !funnel.classList.contains('view-hidden')) {
+      return funnel.scrollHeight;
+    }
+
+    return Math.min(680, Math.round(window.innerHeight * 0.85));
   }
 
   function tryAutoAdvanceStep(delayMs) {

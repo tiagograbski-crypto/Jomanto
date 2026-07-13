@@ -441,19 +441,19 @@ function syncMapeamentoFrameHeight(iframe, section, contentHeight, mode) {
         iframe.style.height = '100%';
         iframe.style.minHeight = '0';
         iframe.style.maxHeight = 'none';
+        section.style.setProperty('--mapeamento-frame-height', '100%');
         section.classList.add('mapeamento-frame-synced');
         return;
     }
 
     const viewportMin = getMapeamentoFrameMinHeight();
     const viewportMax = getMapeamentoFrameMaxHeight();
-    let nextHeight = mode === 'complete'
-        ? Math.min(Math.max(contentHeight, viewportMin), viewportMax)
-        : viewportMin;
+    const measured = contentHeight > 0 ? contentHeight : viewportMin;
+    const nextHeight = Math.min(Math.max(measured, viewportMin), viewportMax);
 
     iframe.style.height = `${nextHeight}px`;
     iframe.style.minHeight = `${viewportMin}px`;
-    iframe.style.maxHeight = mode === 'complete' ? `${viewportMax}px` : `${viewportMax}px`;
+    iframe.style.maxHeight = `${viewportMax}px`;
     section.style.setProperty('--mapeamento-frame-height', `${nextHeight}px`);
     section.classList.add('mapeamento-frame-synced');
 }
@@ -467,6 +467,7 @@ function initMapeamentoEmbed() {
 
     window.addEventListener('message', (event) => {
         if (event.origin !== window.location.origin) return;
+        if (event.source !== iframe.contentWindow) return;
         const data = event.data;
         if (!data?.type) return;
 
@@ -481,6 +482,11 @@ function initMapeamentoEmbed() {
             lastContentHeight = data.height;
             syncMapeamentoFrameHeight(iframe, section, data.height, data.mode || 'funnel');
         }
+    });
+
+    iframe.addEventListener('load', () => {
+        const mode = section.classList.contains('mapeamento-chrome-complete') ? 'complete' : 'funnel';
+        syncMapeamentoFrameHeight(iframe, section, lastContentHeight, mode);
     });
 
     syncMapeamentoFrameHeight(iframe, section, 0, 'funnel');
