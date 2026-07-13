@@ -813,6 +813,7 @@ function initPage(page) {
     if (typeof applyEmpowermentImage === 'function') applyEmpowermentImage();
     applyPortfolioImages();
     renderTrustBar('trust-bar');
+    renderCredentialsSection('credentials-section');
     applyPageSeo(page);
     if (page === 'hub') injectLocalBusinessSchema();
     renderEditorialTeasers('editorial-teasers');

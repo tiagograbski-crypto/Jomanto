@@ -1270,6 +1270,128 @@ body.portfolio-lightbox-open {
     color: var(--jm-text-secondary);
 }
 
+/* ── Formação & certificações ── */
+
+.credentials-section {
+    max-width: 72rem;
+    margin-inline: auto;
+}
+
+.credentials-section__header {
+    max-width: 40rem;
+    margin-bottom: 2.5rem;
+}
+
+.credentials-section__header--compact {
+    margin-bottom: 1.75rem;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.credentials-section__title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.credentials-section__lede {
+    max-width: 36rem;
+}
+
+.credentials-section__header--compact .credentials-section__lede {
+    margin-inline: auto;
+}
+
+.credentials-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .credentials-grid--full,
+    .credentials-grid--featured {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .credentials-grid--full,
+    .credentials-grid--featured {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.credentials-grid--compact {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .credentials-grid--compact {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.credential-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 8.5rem;
+    padding: 1.35rem 1.25rem;
+    background-color: var(--jm-surface-pure);
+    border: 1px solid var(--jm-platinum-warm);
+    box-shadow: var(--jm-shadow-elevated);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.credential-card:hover {
+    border-color: var(--jm-platinum-deep);
+    transform: translateY(-2px);
+}
+
+.credentials-band--platinum .credential-card {
+    background-color: rgba(255, 255, 255, 0.72);
+    border-color: var(--jm-platinum-deep);
+}
+
+.credential-card__area {
+    margin-bottom: 0.65rem;
+}
+
+.credential-card__mentor {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+}
+
+.credential-card__discipline {
+    margin-top: auto;
+}
+
+.credentials-band {
+    padding: 4rem 1.5rem;
+    border-block: 1px solid var(--jm-mist);
+    background-color: var(--jm-linen);
+}
+
+.credentials-band--platinum {
+    background-color: var(--jm-platinum-warm);
+    border-block-color: var(--jm-platinum-deep);
+}
+
+.page-visagismo .credentials-band--platinum {
+    background: linear-gradient(180deg, var(--jm-platinum-warm) 0%, rgba(255, 252, 250, 0.92) 100%);
+}
+
+.credentials-band--inline {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.credentials-band--inline .credentials-section__header {
+    margin-bottom: 1.5rem;
+}
+
 .empowerment-quote {
     border: 1px solid var(--jm-mist);
     background-color: rgba(250, 248, 245, 0.92);

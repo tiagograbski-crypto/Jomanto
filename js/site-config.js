@@ -11,9 +11,58 @@ const SITE_CONFIG = {
     trustStats: [
         { value: '16+', label: 'Anos de Experiência' },
         { value: '2.000+', label: 'Mulheres na Região' },
-        { value: '100%', label: 'Protocolo Personalizado' },
+        { value: '5', label: 'Referências de Formação' },
         { value: '1:1', label: 'Atendimento Exclusivo' }
     ],
+    credentials: [
+        {
+            mentor: 'Magno Alves',
+            discipline: 'Corte',
+            area: 'Estrutura & visagismo',
+            pages: ['hub', 'visagismo']
+        },
+        {
+            mentor: 'Rodrigo Sintra',
+            discipline: 'Corte',
+            area: 'Arquitetura capilar',
+            pages: ['hub', 'visagismo']
+        },
+        {
+            mentor: 'Mano Albuquerque',
+            discipline: 'Corte',
+            area: 'Técnica de precisão',
+            pages: ['hub', 'visagismo']
+        },
+        {
+            mentor: 'Jack Janini',
+            discipline: 'Corte e colorimetria',
+            area: 'Cor & leitura técnica',
+            pages: ['hub', 'visagismo', 'terapias']
+        },
+        {
+            mentor: 'Academia Longueiras',
+            discipline: 'Penteado e corte',
+            area: 'Formação institucional',
+            pages: ['hub', 'visagismo', 'terapias']
+        }
+    ],
+    credentialsCopy: {
+        hub: {
+            kicker: 'Formação & Referências',
+            title: 'Base técnica com mestres da indústria',
+            lede: 'A assinatura Jo Manto combina escuta, visagismo e química avançada — sustentada por formação com profissionais de referência em corte, cor e penteado.'
+        },
+        visagismo: {
+            kicker: 'Certificações & Referências',
+            title: 'Corte aprendido com quem define padrão no Brasil',
+            lede: 'Cada linha no espelho parte de técnica consolidada: estrutura com mestres de corte, leitura de cor com colorimetria e acabamento formado em penteado profissional.'
+        },
+        terapias: {
+            kicker: 'Base técnica',
+            title: 'Cor e cuidado com formação de referência',
+            lede: 'Protocolos GL PRO e leitura do fio apoiados em colorimetria e formação institucional — para prescrever com critério, não com receita genérica.'
+        }
+    },
     pages: {
         hub: {
             whatsappMessage: 'Olá, curadoria Jo Manto. Gostaria de saber mais sobre os serviços.',
@@ -250,6 +299,39 @@ function renderTrustBar(containerId) {
                 <span class="trust-stat-label type-kicker type-kicker--secondary">${stat.label}</span>
             </div>
         `).join('')}`;
+}
+
+function renderCredentialsSection(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container || !SITE_CONFIG.credentials?.length) return;
+
+    const page = container.dataset.credentialsPage || 'hub';
+    const variant = container.dataset.credentialsVariant || 'full';
+    const copy = SITE_CONFIG.credentialsCopy?.[page] || SITE_CONFIG.credentialsCopy.hub;
+    const items = SITE_CONFIG.credentials.filter((item) => item.pages.includes(page));
+    if (!items.length) return;
+
+    const showHeader = container.dataset.credentialsHeader !== 'false';
+    const headerHtml = showHeader && copy ? `
+        <header class="credentials-section__header ${variant === 'compact' ? 'credentials-section__header--compact' : ''}">
+            <span class="type-kicker type-kicker--taupe mb-4 block">${copy.kicker}</span>
+            <h2 class="credentials-section__title font-serif text-espresso leading-tight">${copy.title}</h2>
+            <p class="credentials-section__lede type-body type-body--sm type-body--secondary">${copy.lede}</p>
+        </header>
+    ` : '';
+
+    const cardsHtml = items.map((item) => `
+        <article class="credential-card">
+            <p class="credential-card__area type-kicker type-kicker--clay">${item.area}</p>
+            <h3 class="credential-card__mentor font-serif text-espresso">${item.mentor}</h3>
+            <p class="credential-card__discipline type-kicker type-kicker--secondary type-kicker--inline">${item.discipline}</p>
+        </article>
+    `).join('');
+
+    container.innerHTML = `
+        ${headerHtml}
+        <div class="credentials-grid credentials-grid--${variant}" role="list">${cardsHtml}</div>
+    `;
 }
 
 function applyEmpowermentImage() {
