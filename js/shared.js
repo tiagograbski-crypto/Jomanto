@@ -430,6 +430,14 @@ function applyHeroImage(page) {
     heroImg.src = src;
 }
 
+function applyHeroKicker(page) {
+    const kicker = document.getElementById('hero-kicker');
+    if (!kicker) return;
+
+    const copy = SITE_CONFIG.hero?.[page]?.kicker;
+    if (copy) kicker.textContent = copy;
+}
+
 function applyJoImage() {
     const joImg = document.getElementById('img-jo');
     if (joImg) joImg.src = SITE_CONFIG.images.jo;
@@ -819,6 +827,7 @@ function initPage(page) {
     renderFooter();
     applyPageCta(page);
     applyHeroImage(page);
+    applyHeroKicker(page);
     applyJoImage();
     if (typeof applyEmpowermentImage === 'function') applyEmpowermentImage();
     applyPortfolioImages();

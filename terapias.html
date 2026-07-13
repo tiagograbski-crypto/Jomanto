@@ -38,7 +38,7 @@
         <div class="hero-scrim-top absolute inset-0 z-[1] pointer-events-none"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/50 to-transparent z-[1]"></div>
         <div class="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center reveal active">
-            <span class="hero-kicker type-kicker mb-6">Terapias Capilares &middot; Jo Manto</span>
+            <span id="hero-kicker" class="hero-kicker">Terapias</span>
             <h1 class="hero-title font-serif text-5xl md:text-7xl leading-[1.1] mb-6">
                 Para Cada Dano,<br/>
                 <span class="italic font-light">Uma Resposta Molecular</span>
@@ -291,50 +291,50 @@
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-12">
                 <span class="route-kicker">Investimento</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Engenharia de Ativos</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Protocolos &amp; Valores</h2>
                 <p class="text-sm text-taupe text-center font-light leading-relaxed max-w-2xl mx-auto">
                     O protocolo é escolhido depois da leitura do fio. Isso evita excesso de produto, cronograma genérico e promessa que não conversa com o dano real.
                 </p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5 items-stretch">
-                <div class="editorial-card pricing-tier p-8 bg-canvas" data-investment-page="terapias" data-investment-tier="session">
+            <div class="pricing-tiers-grid pricing-tiers-grid--terapias gap-5 items-stretch">
+                <div class="editorial-card pricing-tier pricing-tier--cycle jm-glass p-6 md:p-8" data-investment-page="terapias" data-investment-tier="cycle">
                     <div class="pricing-tier-body">
-                        <div class="flex items-start justify-between gap-4 mb-6">
-                            <div>
-                                <h4 class="font-serif text-2xl text-espresso">Sessão de Reposição Avulsa</h4>
-                                <p class="text-xs text-taupe mt-2 font-light">Análise de carência + infusão do ativo exato</p>
-                            </div>
-                            <span class="text-sm font-medium whitespace-nowrap">R$ 250</span>
+                        <span data-investment-badge class="pricing-tier-badge">Mais escolhido</span>
+                        <h4 class="font-serif text-2xl text-espresso">Ciclo de Reconstrução Inteligente</h4>
+                        <p class="pricing-tier-scope type-kicker type-kicker--clay mt-3 mb-4">4 sessões guiadas · ~90 dias</p>
+                        <div class="pricing-tier-price pricing-tier-price--featured" aria-label="Investimento do ciclo: 6 parcelas de 199 reais e 50 centavos, ou 997 reais à vista no PIX">
+                            <span class="pricing-tier-price__installments font-serif text-2xl text-espresso">6× de R$ 199,50</span>
+                            <span class="pricing-tier-price__pix-chip">Economize R$ 200 no PIX</span>
+                            <span class="pricing-tier-price__total type-kicker type-kicker--secondary mt-2">R$ 997 à vista · ou total R$ 1.197 parcelado</span>
                         </div>
-                        <ul class="space-y-3 text-xs font-light text-taupe leading-relaxed mb-8">
-                            <li>• Ideal para fio com necessidade pontual.</li>
-                            <li>• Leitura de água, lipídios, massa e porosidade.</li>
-                            <li>• Ativo GL PRO escolhido conforme diagnóstico.</li>
+                        <p class="text-sm text-taupe mt-5 font-light leading-relaxed">Protocolo guiado pelo seu ciclo de lavagens para fixação prolongada da saúde do fio.</p>
+                        <ul class="pricing-tier-features space-y-3 text-sm font-light text-taupe leading-relaxed mt-5 mb-6">
+                            <li>• Sequência construída para dano químico, porosidade ou perda de massa.</li>
+                            <li>• Reposição orientada por necessidade real, não por calendário fixo.</li>
+                            <li>• Indicação de manutenção conforme resposta do fio.</li>
                         </ul>
                     </div>
-                    <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--secondary">Agendar Sessão Avulsa</a>
+                    <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--primary">Quero o Ciclo Completo</a>
                 </div>
-                <div class="editorial-card pricing-tier p-8" data-investment-page="terapias" data-investment-tier="cycle">
-                    <div class="pricing-tier-body">
-                        <span data-investment-badge class="pricing-tier-badge hidden">Mais escolhido</span>
-                        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-start mb-8">
-                            <div>
-                                <h4 class="font-serif text-2xl text-espresso">Ciclo de Reconstrução Inteligente</h4>
-                                <p class="text-xs text-taupe mt-2 font-light max-w-md leading-relaxed">Protocolo guiado pelo seu ciclo de lavagens para fixação prolongada da saúde do fio.</p>
-                                <ul class="space-y-3 text-xs font-light text-taupe leading-relaxed mt-6">
-                                    <li>• Sequência construída para dano químico, porosidade ou perda de massa.</li>
-                                    <li>• Reposição orientada por necessidade real, não por calendário fixo.</li>
-                                    <li>• Indicação de manutenção conforme resposta do fio.</li>
-                                </ul>
+                <div class="pricing-tier-alt-wrap">
+                    <p class="pricing-tier-alt-label type-kicker type-kicker--secondary">Alternativa pontual</p>
+                    <div class="editorial-card pricing-tier pricing-tier--session jm-glass p-6 md:p-8" data-investment-page="terapias" data-investment-tier="session">
+                        <div class="pricing-tier-body">
+                            <div class="pricing-tier-price-row flex items-start justify-between gap-4 mb-5">
+                                <div>
+                                    <h4 class="font-serif text-2xl text-espresso">Sessão de Reposição Avulsa</h4>
+                                    <p class="text-sm text-taupe mt-2 font-light">1 reposição + leitura completa do fio</p>
+                                </div>
+                                <span class="pricing-tier-price__flat text-lg font-serif text-espresso whitespace-nowrap">R$ 250</span>
                             </div>
-                            <div class="text-left md:text-right bg-blush p-5 rounded-sm border border-mist">
-                                <span class="type-kicker type-kicker--clay mb-1">Investimento Mensalizado</span>
-                                <span class="text-2xl font-serif text-espresso block">6x de R$ 199,50</span>
-                                <span class="type-kicker type-kicker--secondary mt-2 block">Total R$ 1.197 (ou R$ 997 à vista/PIX)</span>
-                            </div>
+                            <ul class="pricing-tier-features space-y-3 text-sm font-light text-taupe leading-relaxed mb-6">
+                                <li>• Ideal para primeiro diagnóstico presencial.</li>
+                                <li>• Leitura de água, lipídios, massa e porosidade.</li>
+                                <li>• Ativo GL PRO escolhido conforme diagnóstico.</li>
+                            </ul>
                         </div>
+                        <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--secondary">Agendar Sessão Avulsa</a>
                     </div>
-                    <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--primary">Conversar Sobre o Ciclo</a>
                 </div>
             </div>
             <p class="text-xs font-light text-taupe text-center mt-10">Atendimento humano e sem compromisso. Fale com nossa curadoria para descobrir seu momento.</p>

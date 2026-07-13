@@ -69,6 +69,11 @@ const SITE_CONFIG = {
         terapias: 'Leitura de cor e formação institucional',
         hub: 'Formação com mestres da indústria'
     },
+    hero: {
+        hub: { kicker: 'Chapecó' },
+        visagismo: { kicker: 'Visagismo' },
+        terapias: { kicker: 'Terapias' }
+    },
     pages: {
         hub: {
             whatsappMessage: 'Olá, curadoria Jo Manto. Gostaria de saber mais sobre os serviços.',
@@ -108,9 +113,9 @@ const SITE_CONFIG = {
             },
             cycle: {
                 label: 'Ciclo de Reconstrução Inteligente',
-                cta: 'Conversar Sobre o Ciclo',
+                cta: 'Quero o Ciclo Completo',
                 featured: true,
-                whatsappMessage: 'Olá, Jo Manto. Tenho interesse no Ciclo de Reconstrução Inteligente e quero entender se é o melhor caminho para o meu fio.'
+                whatsappMessage: 'Olá, Jo Manto. Tenho interesse no Ciclo de Reconstrução Inteligente e gostaria de reservar minha vaga no protocolo completo.'
             }
         }
     },

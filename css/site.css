@@ -1,6 +1,38 @@
 /* Jo Manto · site styles (tokens em css/tokens.css) */
 @import url('typography.css');
 
+/* ── Matte glass surfaces ── */
+
+.jm-glass {
+    background-color: var(--jm-glass-bg);
+    backdrop-filter: blur(var(--jm-glass-blur));
+    -webkit-backdrop-filter: blur(var(--jm-glass-blur));
+    border: 1px solid var(--jm-glass-border);
+    box-shadow: var(--jm-glass-shadow);
+}
+
+.jm-glass--on-dark {
+    background-color: var(--jm-glass-bg-dark);
+    border-color: var(--jm-glass-border-dark);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .jm-glass {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: var(--jm-glass-bg-strong);
+    }
+
+    .jm-glass--on-dark {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: rgba(250, 248, 245, 0.14);
+    }
+}
+
 /* ── Hero: tipografia por tom de fundo da foto ── */
 
 .hero--dim .hero-kicker { color: var(--jm-champagne); }
@@ -19,14 +51,18 @@
 .hero--balanced .hero-lead { color: rgba(250, 248, 245, 0.88); }
 
 .hero-kicker {
+    display: block;
+    margin-bottom: 1rem;
     font-size: var(--jm-type-kicker);
     font-weight: 500;
     letter-spacing: var(--jm-tracking-kicker);
     text-transform: uppercase;
+    line-height: 1.4;
 }
 
 @media (min-width: 768px) {
     .hero-kicker {
+        margin-bottom: 1.25rem;
         letter-spacing: 0.22em;
     }
 }
@@ -92,15 +128,17 @@ body {
 }
 
 .editorial-card {
-    border: 1px solid #D8D2C8;
-    background-color: rgba(250, 248, 245, 0.72);
+    border: 1px solid var(--jm-mist);
+    background-color: var(--jm-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
 }
 
 .editorial-card:hover {
     transform: translateY(-2px);
     border-color: rgba(139, 102, 88, 0.35);
-    background-color: rgba(250, 248, 245, 0.92);
+    background-color: var(--jm-glass-bg-strong);
 }
 
 .editorial-teaser {
@@ -352,9 +390,10 @@ body.portfolio-lightbox-open {
 }
 
 .floating-cta-badge {
-    background-color: rgba(250, 248, 245, 0.74) !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background-color: var(--jm-glass-bg) !important;
+    backdrop-filter: blur(var(--jm-glass-blur));
+    -webkit-backdrop-filter: blur(var(--jm-glass-blur));
+    border: 1px solid var(--jm-glass-border) !important;
 }
 
 .floating-cta {
@@ -379,8 +418,10 @@ body.portfolio-lightbox-open {
 }
 
 .clinical-scorecard {
-    border: 1px solid #D8D2C8;
-    background-color: rgba(250, 248, 245, 0.72);
+    border: 1px solid var(--jm-glass-border);
+    background-color: var(--jm-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem;
 }
 
@@ -686,10 +727,10 @@ body.mapeamento-immersive-open .floating-cta-wrap {
     margin-inline: 0;
     padding: 0.65rem 1.25rem;
     border-radius: var(--jm-radius-pill);
-    background: rgba(250, 248, 245, 0.82);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--jm-platinum-warm);
+    background: var(--jm-glass-bg-strong);
+    backdrop-filter: blur(var(--jm-glass-blur));
+    -webkit-backdrop-filter: blur(var(--jm-glass-blur));
+    border: 1px solid var(--jm-glass-border);
     box-shadow: 0 10px 36px rgba(31, 28, 26, 0.1);
     transform: translateX(-50%) !important;
 }
@@ -736,17 +777,6 @@ body.mapeamento-immersive-open .floating-cta-wrap {
 
     .page-visagismo .hero--balanced {
         align-items: flex-end;
-    }
-}
-
-.page-visagismo .hero-kicker {
-    font-size: max(0.6875rem, var(--jm-type-kicker));
-    letter-spacing: var(--jm-tracking-kicker);
-}
-
-@media (min-width: 768px) {
-    .page-visagismo .hero-kicker {
-        letter-spacing: 0.22em;
     }
 }
 
@@ -1216,7 +1246,7 @@ body.mapeamento-immersive-open .floating-cta-wrap {
 .hero-btn-secondary {
     color: #3D3835;
     border: 1px solid rgba(61, 56, 53, 0.22);
-    background-color: rgba(250, 248, 245, 0.62);
+    background-color: var(--jm-glass-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -1559,9 +1589,9 @@ body.mapeamento-immersive-open .floating-cta-wrap {
     margin-bottom: 1.5rem;
 }
 
-.empowerment-quote {
-    border: 1px solid var(--jm-mist);
-    background-color: rgba(250, 248, 245, 0.92);
+.empowerment-quote,
+.specialist-quote {
+    border-radius: 0.125rem;
     margin-top: 1rem;
     width: 100%;
     max-width: none;
@@ -1576,11 +1606,25 @@ body.mapeamento-immersive-open .floating-cta-wrap {
         width: auto;
         max-width: 14rem;
     }
+
+    .specialist-quote {
+        position: absolute;
+        bottom: -1.5rem;
+        right: -1rem;
+        margin-top: 0;
+        width: auto;
+        max-width: 16rem;
+    }
 }
 
 @media (min-width: 1024px) {
     .empowerment-quote {
         max-width: none;
+    }
+
+    .specialist-quote {
+        right: -2rem;
+        max-width: 18rem;
     }
 }
 
@@ -1764,7 +1808,9 @@ body.mapeamento-immersive-open .floating-cta-wrap {
 .pricing-tier-cta--secondary {
     color: var(--jm-espresso);
     border: 1px solid var(--jm-mist);
-    background-color: rgba(250, 248, 245, 0.72);
+    background-color: var(--jm-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .pricing-tier-cta--secondary:hover {
@@ -1773,6 +1819,92 @@ body.mapeamento-immersive-open .floating-cta-wrap {
 
 .pricing-tier-body {
     flex: 1;
+}
+
+.pricing-tiers-grid--terapias {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.pricing-tier--cycle {
+    order: 1;
+}
+
+.pricing-tier-alt-wrap {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.pricing-tier-alt-wrap .pricing-tier {
+    flex: 1;
+}
+
+.pricing-tier-alt-label {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.pricing-tier-scope {
+    letter-spacing: 0.14em;
+}
+
+.pricing-tier-price--featured {
+    padding: 1rem 1.15rem;
+    border-radius: 0.125rem;
+    border: 1px solid var(--jm-platinum-warm);
+    background: linear-gradient(135deg, rgba(232, 221, 212, 0.55) 0%, rgba(250, 248, 245, 0.82) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.pricing-tier-price__pix-chip {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.65rem;
+    padding: 0.3rem 0.6rem;
+    font-size: var(--jm-type-kicker);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--jm-amber-reserve);
+    border: 1px solid rgba(184, 115, 51, 0.35);
+    border-radius: var(--jm-radius-pill);
+    background-color: rgba(255, 252, 250, 0.88);
+}
+
+.pricing-tier-price__total {
+    display: block;
+}
+
+.pricing-tier--featured.jm-glass {
+    background-color: var(--jm-glass-bg-strong) !important;
+}
+
+@media (min-width: 1024px) {
+    .pricing-tiers-grid--terapias {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .pricing-tier--cycle {
+        order: 2;
+    }
+
+    .pricing-tier-alt-wrap {
+        order: 1;
+    }
+
+    .pricing-tier-alt-label {
+        text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pricing-tier-price--featured {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }
 
 @media (max-width: 767px) {
