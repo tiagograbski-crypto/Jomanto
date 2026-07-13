@@ -1,0 +1,266 @@
+/**
+ * Jo Manto · Premium funnel UI (P0/P1)
+ */
+
+/* ── Progress segment dots ── */
+.jm-progress-label {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--jm-text-muted);
+    line-height: 1.4;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.jm-progress-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    width: 100%;
+}
+
+.jm-progress-dot {
+    flex: 1 1 0;
+    height: 5px;
+    border-radius: var(--jm-radius-pill);
+    background: var(--jm-accent-soft);
+    transition: background var(--jm-motion-enter), transform var(--jm-motion-enter);
+}
+
+.jm-progress-dot.is-active {
+    background: var(--jm-espresso);
+    transform: scaleY(1.15);
+}
+
+.jm-progress-dot.is-complete {
+    background: var(--jm-accent);
+}
+
+.jm-progress-dots--3 .jm-progress-dot {
+    flex: 1 1 0;
+}
+
+/* ── Primary / ghost buttons ── */
+.btn-primary {
+    appearance: none;
+    background: var(--jm-espresso) !important;
+    color: #fff !important;
+    border: none;
+    border-radius: var(--jm-radius-pill) !important;
+    letter-spacing: 0.14em;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    box-shadow: 0 10px 28px rgba(61, 56, 53, 0.16);
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #2a2624 !important;
+}
+
+.btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-ghost {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--jm-text-subtle);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color 0.2s ease;
+}
+
+.btn-ghost:hover {
+    color: var(--jm-text);
+}
+
+.btn-welcome {
+    width: 100%;
+    max-width: 18rem;
+    padding: 0.95rem 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* ── Welcome screen ── */
+.step-welcome-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--jm-accent-soft);
+    border: 1px solid var(--jm-mist);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: var(--jm-accent);
+}
+
+.jm-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.6875rem;
+    color: var(--jm-text-muted);
+    letter-spacing: 0.06em;
+}
+
+.jm-trust-strip span::before {
+    content: "·";
+    margin-right: 0.5rem;
+    color: var(--jm-champagne);
+}
+
+.jm-trust-strip span:first-child::before {
+    content: none;
+    margin: 0;
+}
+
+.jm-welcome-back {
+    margin-top: 1.5rem;
+    font-size: 0.6875rem;
+    color: var(--jm-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.jm-welcome-back:hover {
+    color: var(--jm-accent);
+}
+
+/* ── Structure cards ── */
+.structure-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--jm-mist);
+    border-radius: 0.85rem;
+    padding: 1rem;
+    min-height: 5.5rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--jm-text);
+    cursor: pointer;
+}
+
+.structure-card:hover {
+    border-color: var(--jm-champagne);
+    background: var(--jm-accent-soft);
+}
+
+.structure-card:focus-visible {
+    outline: 2px solid var(--jm-accent);
+    outline-offset: 2px;
+}
+
+.structure-card svg {
+    color: var(--jm-text-subtle);
+    margin-bottom: 0.5rem;
+}
+
+/* ── Field validation ── */
+.field-input {
+    border-bottom: 1px solid var(--jm-border-light);
+    transition: border-color 0.2s ease;
+}
+
+.field-input:focus {
+    outline: none;
+    border-color: var(--jm-accent) !important;
+}
+
+.field-input--error {
+    border-color: var(--jm-error) !important;
+}
+
+.field-error {
+    font-size: 0.75rem;
+    color: var(--jm-error);
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.field-error--group {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--jm-error-soft);
+    border-radius: var(--jm-radius-control);
+}
+
+/* ── Jo Manto token overrides (purge GL PRO orange in funnel) ── */
+body.jo-manto-skin .option-card.selected,
+body.jo-manto-skin .checkbox-item.checked,
+body.jo-manto-skin .history-segment-opt.selected,
+body.jo-manto-skin .history-segment-opt--wide.selected {
+    border-color: var(--jm-accent) !important;
+    background-color: var(--jm-accent-wash) !important;
+    color: var(--jm-accent) !important;
+}
+
+body.jo-manto-skin .option-card.selected svg,
+body.jo-manto-skin .history-segment-opt.selected .history-segment-title {
+    color: var(--jm-accent) !important;
+    stroke: var(--jm-accent);
+}
+
+body.jo-manto-skin .checkbox-item:focus-within,
+body.jo-manto-skin .history-segment-opt:focus-visible,
+body.jo-manto-skin .option-card:focus-visible {
+    outline: 2px solid var(--jm-accent);
+    outline-offset: 2px;
+}
+
+body.jo-manto-skin .chk-icon--accent {
+    background-color: var(--jm-accent) !important;
+    border-color: var(--jm-accent) !important;
+}
+
+body.jo-manto-skin .cross-preload-bar {
+    background: linear-gradient(90deg, var(--jm-accent), var(--jm-champagne)) !important;
+}
+
+body.jo-manto-skin .cross-preload-scanner {
+    color: var(--jm-accent) !important;
+}
+
+body.jo-manto-skin .cross-preload-scanner__beam {
+    fill: var(--jm-accent) !important;
+}
+
+body.jo-manto-skin .loader-ring:after {
+    border-color: var(--jm-accent) transparent var(--jm-accent) transparent !important;
+}
+
+body.jo-manto-skin .cross-preload-badge {
+    color: var(--jm-accent);
+    background: var(--jm-accent-soft);
+}
+
+body.jo-manto-skin .cross-preload-context {
+    background: var(--jm-accent-soft) !important;
+    color: var(--jm-text) !important;
+}
+
+body.jo-manto-skin .cross-preload-context .cross-preload-context__label {
+    color: var(--jm-accent) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .jm-progress-dot {
+        transition-duration: 0.01ms !important;
+    }
+}

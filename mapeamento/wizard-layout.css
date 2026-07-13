@@ -1,0 +1,118 @@
+/**
+ * Jo Manto · Wizard lateral (motor GL PRO isolado)
+ * Altura fixa no card, sem scroll vertical; transições laterais entre fases.
+ */
+
+/* ── Motor wizard: um painel por vez, sem stack vertical ── */
+body.jo-manto-skin #steps-container.steps-stage {
+    position: relative !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+body.jo-manto-skin .steps-stage > .step-pane {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+body.jo-manto-skin .steps-stage > .step-pane:not(.hidden) {
+    display: flex;
+    flex-direction: column;
+}
+
+body.jo-manto-skin .steps-stage > .step-pane.hidden {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+body.jo-manto-skin.funnel-footer-active #steps-container {
+    padding-bottom: 0 !important;
+}
+
+body.jo-manto-skin .molecular-strip-root {
+    display: none !important;
+}
+
+/* Standalone */
+body.jo-manto-skin:not(.is-embed) #view-funnel.funnel-shell {
+    height: min(680px, 85vh);
+    max-height: min(680px, 85vh);
+    min-height: min(640px, 78vh);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Embed: funil full-bleed dentro do iframe */
+body.jo-manto-skin.is-embed {
+    height: 100% !important;
+    min-height: 100% !important;
+    overflow: hidden !important;
+}
+
+body.jo-manto-skin.is-embed > .fixed {
+    display: none !important;
+}
+
+body.jo-manto-skin.is-embed #view-funnel.funnel-shell {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+body.jo-manto-skin.is-embed #view-dossier {
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    padding-bottom: 0 !important;
+}
+
+body.jo-manto-skin #history-window-section.history-reveal {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    pointer-events: auto;
+    transform: none;
+}
+
+body.jo-manto-skin #step-2 > div.flex.items-start {
+    display: none;
+}
+
+body.jo-manto-skin:not(.is-embed) #view-dossier {
+    width: 100%;
+    max-width: 64rem;
+}
+
+@media (max-width: 639px) {
+    body.jo-manto-skin #steps-container {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    body.jo-manto-skin:not(.is-embed) .funnel-shell {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        min-height: min(640px, 85vh) !important;
+        height: min(680px, 85vh) !important;
+        max-height: min(680px, 85vh) !important;
+    }
+
+    body.jo-manto-skin.is-embed .funnel-shell {
+        margin: 0 !important;
+        min-height: 0 !important;
+        height: 100% !important;
+        max-height: 100% !important;
+    }
+}

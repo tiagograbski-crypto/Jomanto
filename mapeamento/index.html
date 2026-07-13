@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#FAF8F5">
+    <title>Jo Manto · Mapeamento Capilar</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">@import "../css/tailwind-theme.css";</style>
+    <script src="vendor/lucide.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Azeret+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="mapping-layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wizard-layout.css">
+    <link rel="stylesheet" href="jm-premium.css">
+</head>
+<body class="jo-manto-skin min-h-screen flex flex-col items-center relative overflow-x-clip">
+<script>if(window.parent!==window){document.documentElement.classList.add('is-embed');document.body.classList.add('is-embed');}</script>
+<div class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-white via-[#FAFAFA] to-[#FDF1E6] opacity-30 z-[-1]"></div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 1: FUNIL DE MAPEAMENTO COMPLETO                                      -->
+    <!-- ========================================================================= -->
+    <main id="view-funnel" class="funnel-shell w-full max-w-2xl bg-white border border-[#EBEBEB] rounded-[24px] shadow-sm relative overflow-hidden flex flex-col min-h-0 z-10">
+        
+        <div id="progress-header" class="jm-phase-rail hidden px-6 md:px-8 pt-6 pb-4 border-b border-[#EBEBEB]/80">
+            <div class="flex items-center justify-between gap-4 mb-2">
+                <p id="semantic-progress" class="jm-progress-label truncate" aria-live="polite">Arquitetura natural</p>
+                <p id="step-counter" class="jm-phase-count font-mono-custom text-[11px] tracking-widest text-[#3D3835] shrink-0 tabular-nums" aria-hidden="true">01 / 07</p>
+            </div>
+            <div id="progress-dots" class="jm-progress-dots" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="7" aria-label="Progresso do mapeamento"></div>
+        </div>
+
+        <div class="steps-stage flex-1 relative min-h-0" id="steps-container">
+            
+            <!-- Boas-vindas -->
+            <div class="step-pane slide-up flex flex-col items-center text-center justify-center max-sm:justify-start max-sm:pt-6 h-full" id="step-intro">
+                <div class="step-welcome-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-light text-[#1A1A1A] mb-3 tracking-tight max-w-sm" id="triagem-intro-headline">Mapeamento Capilar Digital</h1>
+                <p class="text-sm text-[#666666] font-light max-w-sm mx-auto mb-2 leading-relaxed" id="triagem-intro-subline">Leitura orientativa do seu fio em poucos passos — para personalizar sua avaliação presencial.</p>
+                <div class="jm-trust-strip" aria-label="Informações da triagem">
+                    <span>~3 minutos</span>
+                    <span>Gratuito</span>
+                    <span>Sem compromisso</span>
+                </div>
+                <button type="button" onclick="GLProMapeamento.beginStructureStep()" class="btn-primary btn-welcome">Iniciar leitura capilar</button>
+                <p class="text-[10px] text-[#A3A3A3] font-light max-w-xs mx-auto mt-6 leading-relaxed" id="triagem-intro-disclaimer">Orientação algorítmica. A confirmação técnica ocorre no estúdio Jo Manto.</p>
+                <p class="mt-8 text-[10px] uppercase tracking-wide text-[#A3A3A3] font-medium">Jo Manto</p>
+            </div>
+
+            <!-- Estrutura natural (passo 1) -->
+            <div class="step-pane hidden flex flex-col justify-center h-full" id="step-intro-structure">
+                <div class="triagem-action-zone w-full max-w-md mx-auto text-left">
+                    <h2 id="triagem-structure-question" class="text-xl font-light text-[#1A1A1A] mb-2" tabindex="-1">Qual é a estrutura do seu cabelo hoje?</h2>
+                    <p id="triagem-structure-rationale" class="text-sm text-[#666666] font-light mb-6">Sua estrutura define como os ativos serão absorvidos no protocolo.</p>
+                    <div class="structure-picker-grid grid grid-cols-2 gap-3" role="group" aria-labelledby="triagem-structure-question">
+                        <button type="button" onclick="GLProMapeamento.startMapping('Liso')" class="structure-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3v18"/><path d="M12 3v18"/><path d="M15 3v18"/></svg><span class="text-sm font-medium">Liso</span>
+                        </button>
+                        <button type="button" onclick="GLProMapeamento.startMapping('Ondulado')" class="structure-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3C10.5 6 5.5 9 8 12 10.5 15 5.5 18 8 21"/><path d="M12 3C14.5 6 9.5 9 12 12 14.5 15 9.5 18 12 21"/><path d="M16 3C18.5 6 13.5 9 16 12 18.5 15 13.5 18 16 21"/></svg><span class="text-sm font-medium">Ondulado</span>
+                        </button>
+                        <button type="button" onclick="GLProMapeamento.startMapping('Cacheado')" class="structure-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3C12 5 12 7 9 9 6 11 6 13 9 15 12 17 12 19 9 21"/><path d="M15 3C18 5 18 7 15 9 12 11 12 13 15 15 18 17 18 19 15 21"/></svg><span class="text-sm font-medium">Encaracolado</span>
+                        </button>
+                        <button type="button" onclick="GLProMapeamento.startMapping('Crespo')" class="structure-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l2 2.5-2 2.5 2 2.5-2 2.5 2 2.5-2 2.5 2 2.5"/><path d="M14 3l2 2.5-2 2.5 2 2.5-2 2.5 2 2.5-2 2.5 2 2.5"/></svg><span class="text-sm font-medium">Crespo</span>
+                        </button>
+                    </div>
+                    <button type="button" onclick="GLProMapeamento.showWelcomeStep()" class="jm-welcome-back">← Voltar</button>
+                </div>
+            </div>
+
+            <!-- PASSO 0: Nome -->
+            <div class="step-pane hidden" id="step-0">
+                <div class="mb-8 text-center md:text-left">
+                    <h2 class="text-2xl sm:text-3xl font-light text-[#1A1A1A] mb-2" id="step-0-greeting">Abertura do Dossiê Digital</h2>
+                    <p id="step-0-subline" class="text-[#666666] font-light">Para projetarmos a arquitetura de ativos exata para o seu fio <span id="intro-struct-label" class="font-medium text-[#2D2D2D] lowercase"></span>, identifique-se:</p>
+                </div>
+                <input type="text" id="user-name" autofocus onkeypress="if(event.keyCode===13) GLProMapeamento.footerNext()" placeholder="Seu primeiro nome" class="field-input w-full text-xl sm:text-2xl font-light py-3 bg-transparent mb-1" autocomplete="name" aria-describedby="user-name-error footer-step-hint">
+                <p id="user-name-error" class="field-error hidden" role="alert">Informe seu primeiro nome para continuar.</p>
+                <p class="text-xs text-[#999999] font-light mt-3">Usamos apenas o primeiro nome no seu dossiê.</p>
+            </div>
+
+            <!-- PASSO 1: Dor principal -->
+            <div class="step-pane hidden" id="step-1">
+                <h2 class="text-2xl font-light mb-2" id="step-1-title">Qual é a sua principal dor hoje?</h2>
+                <p id="step-1-subline" class="text-[#666666] font-light mb-6"><span class="dyn-name font-medium"></span><span id="step-1-subline-suffix">, o que mais incomoda no seu fio neste momento?</span></p>
+                <div class="grid grid-cols-1 gap-3">
+                    <button type="button" class="option-card flex items-center justify-between w-full text-left" onclick="GLProMapeamento.selectOption(this, 'goal', 'Quebra')"><span id="goal-quebra-label" class="text-sm font-medium">Recuperar quebra e elasticidade</span><i data-lucide="scissors" class="w-5 h-5 shrink-0 ml-2" aria-hidden="true"></i></button>
+                    <button type="button" class="option-card flex items-center justify-between w-full text-left" onclick="GLProMapeamento.selectOption(this, 'goal', 'Brilho')"><span id="goal-brilho-label" class="text-sm font-medium">Devolver brilho e maciez</span><i data-lucide="sparkles" class="w-5 h-5 shrink-0 ml-2" aria-hidden="true"></i></button>
+                    <button type="button" class="option-card flex items-center justify-between w-full text-left" onclick="GLProMapeamento.selectOption(this, 'goal', 'Diagnostico')"><span id="goal-diagnostico-label" class="text-sm font-medium">Entender por que nada funciona</span><i data-lucide="help-circle" class="w-5 h-5 shrink-0 ml-2" aria-hidden="true"></i></button>
+                    <button type="button" class="option-card flex items-center justify-between border-dashed bg-[#FAFAFA] w-full text-left" onclick="GLProMapeamento.selectOption(this, 'goal', 'Descobrir')"><span class="text-sm font-medium text-[#666666]" id="goal-discover-label">Só quero diagnóstico antes de investir</span><i data-lucide="search" class="w-5 h-5 text-[#A3A3A3] shrink-0 ml-2" aria-hidden="true"></i></button>
+                </div>
+            </div>
+
+            <!-- PASSO 2: Histórico — procedimentos → recência (lateral) -->
+            <div class="step-pane hidden" id="step-2">
+                <div id="step-2-procedures" class="step-subpane is-active">
+                    <h2 class="text-2xl font-light mb-2" id="step-2-title">Inventário Químico da Fibra.</h2>
+                    <p class="text-[#666666] font-light mb-5 leading-relaxed" id="step-2-context">Selecione as intervenções químicas prévias. A precisão destes dados é vital para calcularmos a zona de segurança da sua fibra capilar.</p>
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-[#999999] font-medium mb-3">Procedimentos</p>
+                    <div class="jm-option-grid space-y-2" id="history-procedures-list">
+                        <label class="checkbox-item history-chk" for="triagem-history-formol"><input type="checkbox" id="triagem-history-formol" class="triage-chk-input sr-only" data-group="history" data-value="formol"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium block">Progressiva com Formol</span></div></label>
+                        <label class="checkbox-item history-chk" for="triagem-history-organica"><input type="checkbox" id="triagem-history-organica" class="triage-chk-input sr-only" data-group="history" data-value="organica"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium block">Progressiva Orgânica / Ácida</span><span class="text-[10px] text-gray-500 block">Botox e Selagem térmica.</span></div></label>
+                        <label class="checkbox-item history-chk" for="triagem-history-relaxamento"><input type="checkbox" id="triagem-history-relaxamento" class="triage-chk-input sr-only" data-group="history" data-value="relaxamento"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium block">Relaxamento / Tioglicolato</span></div></label>
+                        <label class="checkbox-item history-chk" for="triagem-history-hene"><input type="checkbox" id="triagem-history-hene" class="triage-chk-input sr-only" data-group="history" data-value="hene"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium block">Henê</span></div></label>
+                        <label class="checkbox-item history-chk" for="triagem-history-mechas"><input type="checkbox" id="triagem-history-mechas" class="triage-chk-input sr-only" data-group="history" data-value="mechas"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium block">Descoloração / Mechas / Iluminação</span></div></label>
+                        <label class="checkbox-item history-chk" for="triagem-history-coloracao"><input type="checkbox" id="triagem-history-coloracao" class="triage-chk-input sr-only" data-group="history" data-value="coloracao"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><span class="text-sm font-medium block">Coloração ou Tonalizante</span></label>
+                        <label class="checkbox-item border-dashed bg-[#FAFAFA] history-chk" id="chk-virgem" for="triagem-history-virgem"><input type="checkbox" id="triagem-history-virgem" class="triage-chk-input sr-only" data-group="history" data-value="virgem" data-mode="exclusive" data-peers="history-chk"><div class="w-5 h-5 border border-[#A3A3A3] rounded mr-4 flex items-center justify-center chk-icon shrink-0 mt-0.5"></div><div><span class="text-sm font-medium text-[#666666] block">Cabelo Virgem / Nenhuma Química</span></div></label>
+                    </div>
+                    <p class="hidden text-[10px] text-[#999999] mt-4" id="lbl-goal-dyn-wrap">Objetivo: <strong id="lbl-goal-dyn" class="font-medium text-[#2D2D2D]"></strong></p>
+                    <p id="history-procedures-error" class="field-error field-error--group hidden" role="alert">Selecione pelo menos um procedimento ou marque cabelo virgem.</p>
+                </div>
+
+                <div id="step-2-window" class="step-subpane hidden" aria-hidden="true">
+                    <h2 class="text-2xl font-light mb-2">Recência química.</h2>
+                    <p class="text-[#666666] font-light mb-5 leading-relaxed">Há quantos meses foi o procedimento mais recente?</p>
+                    <div id="history-window-section" class="history-reveal is-visible" aria-hidden="false">
+                        <div class="history-segment-group history-segment-group--4" id="history-window-options" role="radiogroup" aria-label="Recência do histórico químico em meses">
+                            <button type="button" class="history-segment-opt" data-window="1_mes" aria-pressed="false" onclick="GLProMapeamento.selectHistoryWindow(this, '1_mes')">
+                                <span class="history-segment-title">1 mês</span>
+                                <span class="history-segment-sub">Saturação ativa</span>
+                            </button>
+                            <button type="button" class="history-segment-opt" data-window="2_meses" aria-pressed="false" onclick="GLProMapeamento.selectHistoryWindow(this, '2_meses')">
+                                <span class="history-segment-title">2 meses</span>
+                                <span class="history-segment-sub">Muito recente</span>
+                            </button>
+                            <button type="button" class="history-segment-opt" data-window="3_meses" aria-pressed="false" onclick="GLProMapeamento.selectHistoryWindow(this, '3_meses')">
+                                <span class="history-segment-title">3 meses</span>
+                                <span class="history-segment-sub">Influência visível</span>
+                            </button>
+                            <button type="button" class="history-segment-opt" data-window="4_meses" aria-pressed="false" onclick="GLProMapeamento.selectHistoryWindow(this, '4_meses')">
+                                <span class="history-segment-title">4 meses</span>
+                                <span class="history-segment-sub">Saturação em redução</span>
+                            </button>
+                        </div>
+                        <button type="button" class="history-segment-opt history-segment-opt--wide" data-window="acima_4" aria-pressed="false" onclick="GLProMapeamento.selectHistoryWindow(this, 'acima_4')">
+                            <span class="history-segment-title">&gt; 4 meses</span>
+                            <span class="history-segment-sub">Sem química recente no período de observação</span>
+                        </button>
+                        <p id="history-window-error" class="hidden text-xs text-red-600 font-medium mt-2" role="alert">Indique há quantos meses foi o procedimento químico mais recente.</p>
+                    </div>
+                    <div id="history-selection-summary" class="hidden mt-4 px-4 py-3 bg-[#FAF8F5] border border-[#D8D2C8] rounded-xl text-xs text-[#7A7268] leading-relaxed">
+                        <span class="block text-[9px] uppercase tracking-[0.18em] font-medium text-[#8B6658] mb-1">Resumo técnico</span>
+                        <span id="history-summary-text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASSO 3: Indicadores do fio -->
+            <div class="step-pane hidden" id="step-3">
+                <h2 class="text-2xl font-light mb-2">Comportamento da Fibra.</h2>
+                <p class="text-[#666666] font-light mb-5">Neste momento, quais características identifica no seu fio?</p>
+                <div class="jm-chip-grid" id="symptoms-list">
+                    <label class="checkbox-item checkbox-item--chip border-dashed bg-[#F0FDF4] border-[#10B981]/30 hover:border-[#10B981] symp-chk" id="chk-saudavel" for="triagem-symptom-saudavel"><input type="checkbox" id="triagem-symptom-saudavel" class="triage-chk-input sr-only" data-group="symptoms" data-value="saudavel" data-mode="exclusive-symptom" data-peers="symp-chk" data-accent="green"><div class="w-4 h-4 border border-[#10B981] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium text-[#065F46]">Saudável / Sem danos</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk" for="triagem-symptom-quebra"><input type="checkbox" id="triagem-symptom-quebra" class="triage-chk-input sr-only" data-group="symptoms" data-value="quebra"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Quebra constante</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk" for="triagem-symptom-emborrachamento"><input type="checkbox" id="triagem-symptom-emborrachamento" class="triage-chk-input sr-only" data-group="symptoms" data-value="emborrachamento"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Emborrachamento</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk" for="triagem-symptom-porosidade"><input type="checkbox" id="triagem-symptom-porosidade" class="triage-chk-input sr-only" data-group="symptoms" data-value="porosidade"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Porosidade / Frizz</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk" for="triagem-symptom-rigidez"><input type="checkbox" id="triagem-symptom-rigidez" class="triage-chk-input sr-only" data-group="symptoms" data-value="rigidez"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Rigidez / áspero</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk" for="triagem-symptom-afinamento"><input type="checkbox" id="triagem-symptom-afinamento" class="triage-chk-input sr-only" data-group="symptoms" data-value="afinamento"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Pontas ralas</span></label>
+                    <label class="checkbox-item checkbox-item--chip symp-chk jm-chip-span" for="triagem-symptom-misto"><input type="checkbox" id="triagem-symptom-misto" class="triage-chk-input sr-only" data-group="symptoms" data-value="misto"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Raiz oleosa e pontas secas</span></label>
+                </div>
+                <p id="symptoms-error" class="field-error field-error--group hidden" role="alert">Selecione pelo menos um indicador do seu fio.</p>
+            </div>
+
+            <!-- PASSO 3.5: Preload 3 → 4 -->
+            <div class="step-pane hidden text-center px-4" id="step-3-5" aria-live="polite" aria-busy="true" aria-label="A cruzar indicadores do fio com objetivo">
+                <span class="inline-block text-[10px] uppercase tracking-[0.2em] font-medium text-[#D97706] bg-[#FDF1E6] px-2.5 py-1 rounded-full mb-6">03 · Comportamento registado</span>
+                <div class="cross-preload-scanner mb-5" aria-hidden="true">
+                    <svg class="cross-preload-scanner__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <line class="cross-preload-scanner__fiber" x1="16" y1="10" x2="16" y2="38" stroke-width="1.5"/>
+                        <line class="cross-preload-scanner__fiber cross-preload-scanner__fiber--mid" x1="24" y1="8" x2="24" y2="40" stroke-width="1.5"/>
+                        <line class="cross-preload-scanner__fiber" x1="32" y1="10" x2="32" y2="38" stroke-width="1.5"/>
+                        <rect class="cross-preload-scanner__beam" x="10" y="0" width="28" height="2" rx="1" fill="#D97706" stroke="none"/>
+                    </svg>
+                </div>
+                <div class="cross-preload-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cross-preload-progress">
+                    <div class="cross-preload-bar" id="cross-preload-bar"></div>
+                </div>
+                <h2 class="text-xl font-light mb-3">A cruzar perfil da fibra</h2>
+                <p class="cross-preload-status text-sm text-[#666666] font-light leading-relaxed max-w-sm mx-auto mb-6 min-h-[2.75rem]" id="cross-preload-status">Mapeando arquitetura natural do fio...</p>
+                <div class="cross-preload-context bg-[#FDF1E6] rounded-xl p-4 text-xs text-[#92400E] font-medium max-w-sm mx-auto text-left leading-relaxed mb-6">
+                    <span class="block text-[9px] uppercase tracking-wide sm:tracking-widest text-[#D97706] mb-1">Perfil registado</span>
+                    <span class="block mb-1">Objetivo: <strong class="uppercase" id="cross-goal-dyn"></strong></span>
+                    <span class="block" id="cross-preload-symptoms">—</span>
+                </div>
+            </div>
+
+            <!-- PASSO 4: Calibre -->
+            <div class="step-pane hidden" id="step-4">
+                <h2 class="text-2xl font-light mb-2" id="step-4-title">Calibre Estrutural da Fibra.</h2>
+                <p class="text-[#666666] font-light mb-6" id="step-4-subline">Identifique a espessura natural do seu fio. Isso define a carga de ativos que sua estrutura suporta sem gerar peso.</p>
+                <div class="space-y-3">
+                    <button type="button" class="option-card flex items-center w-full text-left" onclick="GLProMapeamento.selectOption(this, 'caliber', 'Fino')"><div class="w-6 h-[1px] bg-gray-400 mr-4" aria-hidden="true"></div><span class="text-sm font-medium">Fino e Frágil</span></button>
+                    <button type="button" class="option-card flex items-center w-full text-left" onclick="GLProMapeamento.selectOption(this, 'caliber', 'Médio')"><div class="w-6 h-[2px] bg-gray-600 mr-4" aria-hidden="true"></div><span class="text-sm font-medium">Médio</span></button>
+                    <button type="button" class="option-card flex items-center w-full text-left" onclick="GLProMapeamento.selectOption(this, 'caliber', 'Grosso')"><div class="w-6 h-[4px] bg-gray-800 mr-4" aria-hidden="true"></div><span class="text-sm font-medium">Grosso e Rígido</span></button>
+                </div>
+            </div>
+
+            <!-- PASSO 5: Frequência -->
+            <div class="step-pane hidden" id="step-5">
+                <h2 class="text-2xl font-light mb-2" id="step-5-title">Ciclo de Higienização.</h2>
+                <p class="text-[#666666] font-light mb-6 leading-relaxed" id="step-5-subline">Com que frequência você higieniza os fios? Este dado é fundamental para calcularmos a durabilidade e o intervalo do seu protocolo.</p>
+                <p class="hidden" id="step-5-note" aria-hidden="true"></p>
+                <p class="text-[10px] uppercase tracking-wide sm:tracking-widest text-[#999999] font-medium mb-3">Lavagens por semana</p>
+                <div class="history-segment-group history-segment-group--4 mb-4" id="wash-frequency-options" role="radiogroup" aria-label="Frequência de lavagem semanal">
+                    <button type="button" class="history-segment-opt" data-wash="1" aria-pressed="false" onclick="GLProMapeamento.selectWashFrequency(this, 1)">
+                        <span class="history-segment-title">1–2 vezes</span>
+                        <span class="history-segment-sub">por semana</span>
+                    </button>
+                    <button type="button" class="history-segment-opt" data-wash="2" aria-pressed="false" onclick="GLProMapeamento.selectWashFrequency(this, 2)">
+                        <span class="history-segment-title">3–4 vezes</span>
+                        <span class="history-segment-sub">dia sim, dia não</span>
+                    </button>
+                    <button type="button" class="history-segment-opt" data-wash="3" aria-pressed="false" onclick="GLProMapeamento.selectWashFrequency(this, 3)">
+                        <span class="history-segment-title">5–6 vezes</span>
+                        <span class="history-segment-sub">por semana</span>
+                    </button>
+                    <button type="button" class="history-segment-opt" data-wash="4" aria-pressed="false" onclick="GLProMapeamento.selectWashFrequency(this, 4)">
+                        <span class="history-segment-title">Todos os dias</span>
+                        <span class="history-segment-sub">lavagem diária</span>
+                    </button>
+                </div>
+                <p id="wash-frequency-error" class="field-error field-error--group hidden" role="alert">Selecione com que frequência você lava os fios.</p>
+                <div id="wash-selection-summary" class="hidden mb-2 px-4 py-3 bg-[#FFFBF5] border border-[#FDE68A] rounded-xl text-xs text-[#92400E] leading-relaxed">
+                    <span class="block text-[9px] uppercase tracking-wide sm:tracking-widest font-medium text-[#D97706] mb-1">Rotina registada</span>
+                    <span id="wash-summary-text"></span>
+                </div>
+            </div>
+
+            <!-- PASSO 6: Lifestyle -->
+            <div class="step-pane hidden" id="step-6">
+                <h2 class="text-2xl font-light mb-2" id="step-6-title">Fatores de Estresse Ambiental.</h2>
+                <p class="text-[#666666] font-light mb-4" id="step-6-subline">Selecione os elementos aos quais sua fibra é exposta no dia a dia (Múltipla escolha).</p>
+                <label class="sr-only" for="region-zone">Região climática</label>
+                <select id="region-zone" onchange="GLProMapeamento.selectRegionZone(this.value)" class="w-full mb-4 px-4 py-3 min-h-[48px] bg-white border border-[#EBEBEB] rounded-xl text-sm text-[#2D2D2D] focus:outline-none focus:border-[#D97706]">
+                    <option value="auto" selected>Automático (fuso horário)</option>
+                    <option value="br_oeste_sc">Brasil — Oeste/Sudoeste SC (polo Chapecó)</option>
+                    <option value="br_sudeste">Brasil — Sudeste</option>
+                    <option value="br_nordeste">Brasil — Nordeste</option>
+                    <option value="br_sul">Brasil — Sul</option>
+                    <option value="br_norte">Brasil — Norte / Centro-Oeste</option>
+                    <option value="latam">América Latina</option>
+                    <option value="europe">Europa</option>
+                    <option value="na">América do Norte</option>
+                    <option value="global">Outro / Perfil Global</option>
+                </select>
+                <div class="jm-chip-grid" id="lifestyle-options-list">
+                    <label class="checkbox-item checkbox-item--chip lifestyle-chk" for="triagem-lifestyle-ac"><input type="checkbox" id="triagem-lifestyle-ac" class="triage-chk-input sr-only" data-group="lifestyle" data-value="ac"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Ar-condicionado</span></label>
+                    <label class="checkbox-item checkbox-item--chip lifestyle-chk" for="triagem-lifestyle-uv"><input type="checkbox" id="triagem-lifestyle-uv" class="triage-chk-input sr-only" data-group="lifestyle" data-value="uv"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Sol direto</span></label>
+                    <label class="checkbox-item checkbox-item--chip lifestyle-chk" for="triagem-lifestyle-suor"><input type="checkbox" id="triagem-lifestyle-suor" class="triage-chk-input sr-only" data-group="lifestyle" data-value="suor"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Suor / treino</span></label>
+                    <label class="checkbox-item checkbox-item--chip lifestyle-chk" for="triagem-lifestyle-poluicao"><input type="checkbox" id="triagem-lifestyle-poluicao" class="triage-chk-input sr-only" data-group="lifestyle" data-value="poluicao"><div class="w-4 h-4 border border-[#A3A3A3] rounded mr-3 flex items-center justify-center chk-icon shrink-0"></div><span class="text-sm font-medium">Poluição</span></label>
+                </div>
+            </div>
+
+            <!-- PASSO 7: Preload final → dossiê -->
+            <div class="step-pane hidden text-center px-4 cross-preload-pane" id="step-7" aria-live="polite" aria-busy="true" aria-label="A consolidar dossiê de triagem">
+                <div class="cross-preload-scanner mb-5" aria-hidden="true">
+                    <svg class="cross-preload-scanner__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <line class="cross-preload-scanner__fiber" x1="16" y1="10" x2="16" y2="38" stroke-width="1.5"/>
+                        <line class="cross-preload-scanner__fiber cross-preload-scanner__fiber--mid" x1="24" y1="8" x2="24" y2="40" stroke-width="1.5"/>
+                        <line class="cross-preload-scanner__fiber" x1="32" y1="10" x2="32" y2="38" stroke-width="1.5"/>
+                        <rect class="cross-preload-scanner__beam" x="10" y="0" width="28" height="2" rx="1" fill="#D97706" stroke="none"/>
+                    </svg>
+                </div>
+                <div class="cross-preload-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="final-preload-progress">
+                    <div class="cross-preload-bar" id="final-preload-bar"></div>
+                </div>
+                <h2 class="text-xl font-light mb-3" id="final-preload-title">A consolidar dossiê de triagem</h2>
+                <p class="cross-preload-status text-sm text-[#666666] font-light leading-relaxed max-w-sm mx-auto mb-6 min-h-[2.75rem]" id="final-preload-status">Mapeando arquitetura natural do fio...</p>
+            </div>
+
+            <!-- PASSO 8: Processamento Final -->
+            <div class="step-pane hidden text-center" id="step-8">
+                <div class="loader-ring mb-8"></div>
+                <h2 class="text-2xl font-light mb-2" id="step-8-title">A preparar o resumo do mapeamento...</h2>
+                <div class="h-10 mt-6 relative overflow-hidden">
+                    <div id="loader-text" class="absolute w-full text-xs text-[#999999] uppercase tracking-wide sm:tracking-widest font-medium transition-transform duration-500 flex flex-col space-y-6 text-center">
+                        <span id="loader-line-1">A organizar o perfil do fio...</span>
+                        <span id="loader-line-2">A cruzar histórico e rotina...</span>
+                        <span id="loader-line-3">A sugerir linha de cuidados...</span>
+                        <span id="loader-line-done" class="text-[#10B981]">Mapeamento concluído.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer-controls" class="hidden funnel-footer px-6 py-4 flex items-center justify-between gap-4 bg-white z-10" role="navigation" aria-label="Navegação do mapeamento">
+            <button type="button" onclick="GLProMapeamento.prevStep()" class="btn-ghost flex items-center shrink-0 min-h-[48px]"><i data-lucide="chevron-left" class="w-4 h-4 mr-1" aria-hidden="true"></i> Voltar</button>
+            <p id="footer-step-hint" class="funnel-footer__hint hidden" aria-live="polite"></p>
+            <button type="button" id="btn-footer-next" onclick="GLProMapeamento.footerNext()" class="btn-primary hidden ml-auto min-h-[48px] px-6 py-3 disabled:opacity-40 disabled:cursor-not-allowed">Continuar</button>
+        </div>
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 2: TRANSIÇÃO HACKER                                                  -->
+    <!-- ========================================================================= -->
+    <div id="view-transition" class="view-hidden fixed inset-0 bg-[#FAFAFA] z-50 flex flex-col items-center justify-center">
+        <div class="loader-ring w-12 h-12 mb-6 border-[3px] after:border-[3px] after:w-[40px] after:h-[40px] after:m-[3px]"></div>
+        <h2 class="text-xl font-light text-[#2D2D2D] tracking-wide text-center px-6" id="transition-title">A organizar orientações para o seu fio...</h2>
+        <p class="text-xs text-[#999999] uppercase tracking-wide sm:tracking-widest mt-2 font-mono-custom" id="transition-sub">Mapeamento digital · Jo Manto</p>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 3: DOSSIÊ                                                            -->
+    <!-- ========================================================================= -->
+    <div id="view-dossier" class="view-hidden w-full relative pb-32 bg-[#FAFAFA]">
+
+        <!-- Wizard embed Jo Manto · 3 telas (sem relatório longo) -->
+        <div id="dossier-embed-wizard" class="dossier-embed-wizard view-hidden" aria-live="polite">
+            <div class="jm-phase-rail dossier-embed-wizard__header px-5 md:px-6 pt-6 pb-4 border-b border-[#EBEBEB]/80">
+                <div class="flex items-center justify-between gap-4 mb-2">
+                    <p class="jm-progress-label">Seu diagnóstico</p>
+                    <p id="dossier-embed-counter" class="jm-phase-count font-mono-custom text-[11px] tracking-widest text-[#3D3835] shrink-0 tabular-nums" aria-hidden="true">01 / 03</p>
+                </div>
+                <div id="dossier-embed-dots" class="jm-progress-dots jm-progress-dots--3" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" aria-label="Progresso do diagnóstico"></div>
+            </div>
+
+            <div id="dossier-embed-pane-1" class="dossier-embed-pane">
+                <p class="text-[10px] uppercase tracking-wide text-[#999999] mb-2"><span class="dyn-name font-medium text-[#2D2D2D]"></span> integridade estimada do fio</p>
+                <div class="flex flex-col items-center text-center py-4">
+                    <div class="relative w-36 h-36 flex items-center justify-center bg-white rounded-full border border-[#EBEBEB] shadow-sm">
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 160 160" aria-hidden="true">
+                            <circle cx="80" cy="80" r="74" stroke="#F5F5F7" stroke-width="4" fill="none" />
+                            <circle id="embed-dossier-ring" class="progress-ring__circle" cx="80" cy="80" r="74" stroke="#8B6658" stroke-width="4" fill="none" stroke-dasharray="464.95" stroke-dashoffset="464.95" stroke-linecap="round" />
+                        </svg>
+                        <span class="text-4xl font-light text-[#1A1A1A]" id="embed-dos-score">--</span>
+                    </div>
+                    <p class="text-xl font-medium text-[#2D2D2D] mt-6 leading-snug max-w-xs" id="embed-dos-status">—</p>
+                    <p class="text-sm text-[#666666] font-light mt-4 max-w-sm leading-relaxed" id="embed-dos-lead">Leitura orientativa para sua avaliação presencial com a Jo Manto.</p>
+                </div>
+            </div>
+
+            <div id="dossier-embed-pane-2" class="dossier-embed-pane hidden">
+                <h2 class="text-lg font-medium text-[#2D2D2D] mb-2">O que você reportou</h2>
+                <p class="text-sm text-[#666666] font-light mb-5">Sintomas e histórico que cruzamos na triagem.</p>
+                <div id="embed-symptoms-grid" class="grid grid-cols-1 gap-3 mb-5"></div>
+                <div class="bg-white border border-[#EBEBEB] rounded-xl p-4 text-left text-sm space-y-2">
+                    <p><span class="text-[10px] uppercase tracking-wide text-[#999999] block mb-1">Estrutura</span><span id="embed-dos-struct" class="font-medium capitalize">—</span></p>
+                    <p><span class="text-[10px] uppercase tracking-wide text-[#999999] block mb-1">Histórico químico</span><span id="embed-dos-history" class="font-medium">—</span></p>
+                </div>
+            </div>
+
+            <div id="dossier-embed-pane-3" class="dossier-embed-pane hidden">
+                <h2 class="text-lg font-medium text-[#2D2D2D] mb-2">Próximo passo presencial</h2>
+                <p class="text-sm text-[#666666] font-light mb-6 leading-relaxed">A leitura digital prepara sua avaliação. No estúdio, a Jo valida o fio e define o protocolo GL PRO certo para o seu momento.</p>
+                <ul class="space-y-3 text-sm text-[#666666] font-light mb-8">
+                    <li class="flex gap-2"><span class="text-[#8B6658]">✓</span> Você já tem clareza sobre a carência do fio</li>
+                    <li class="flex gap-2"><span class="text-[#8B6658]">✓</span> No estúdio: teste de mecha e ativo exato</li>
+                    <li class="flex gap-2"><span class="text-[#8B6658]">✓</span> Você evita investir no tratamento errado</li>
+                </ul>
+                <button type="button" id="embed-wa-cta" onclick="GLProMapeamento.schedulePresentialVisit(event)" class="w-full py-4 bg-[#3D3835] text-white rounded-xl text-[10px] uppercase tracking-[0.18em] font-medium hover:bg-black transition-colors">
+                    Agendar avaliação com a Jo
+                </button>
+                <p class="text-[10px] text-[#A3A3A3] text-center mt-4">WhatsApp · sem compromisso</p>
+            </div>
+
+            <div class="dossier-embed-wizard__nav px-5 py-4 border-t border-[#EBEBEB] flex gap-3">
+                <button type="button" id="dossier-embed-prev" onclick="GLProMapeamento.dossierEmbedPrev()" class="flex-1 py-3 border border-[#EBEBEB] rounded-xl text-[10px] uppercase tracking-wide text-[#666666] font-medium hidden">Voltar</button>
+                <button type="button" id="dossier-embed-next" onclick="GLProMapeamento.dossierEmbedNext(event)" class="btn-primary flex-[2] py-3">Continuar</button>
+            </div>
+        </div>
+
+        <div id="dossier-full-report" class="dossier-full-report">
+        <div class="watermark">Jo Manto</div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-5 md:px-10 pt-12 md:pt-16 space-y-10 md:space-y-14">
+            
+            <header class="border-b border-[#EBEBEB] pb-8 md:pb-10 fade-in-up">
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white border border-[#EBEBEB] text-[#2D2D2D] text-[10px] tracking-wide sm:tracking-widest font-medium rounded-full shadow-sm normal-case"><span class="text-[#666666]">Titular:</span> <span class="font-bold text-[#2D2D2D] dyn-name">Mariana</span></span>
+                    <span class="hidden sm:inline-flex px-3 py-1 bg-white border border-[#EBEBEB] text-[#2D2D2D] text-[10px] uppercase tracking-wide sm:tracking-widest font-medium rounded-full shadow-sm"><i data-lucide="wind" class="w-3 h-3 inline pb-0.5 mr-1 text-[#D97706]"></i> Tendência de Exposição: <span class="font-bold" id="dyn-exposure-badge">--</span></span>
+                    <span class="hidden sm:inline-flex px-3 py-1 bg-[#FDF1E6] text-[#D97706] text-[10px] uppercase tracking-wide sm:tracking-widest font-medium rounded-full shadow-sm"><i data-lucide="lock" class="w-3 h-3 inline pb-0.5 mr-1"></i> <span id="dossier-protocol-badge">Orientação de cuidados · reservada</span></span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-light tracking-tight text-[#1A1A1A] mb-3 leading-tight" id="dossier-title">Resumo do Mapeamento Capilar</h1>
+                <p class="text-[10px] md:text-xs text-[#666666] tracking-normal font-medium mt-4 leading-relaxed" id="dossier-status">
+                    ID <span id="dynamic-id">ER-0000</span> &middot; <span id="current-datetime"></span> &middot; <span id="dossier-status-label">Mapeamento digital concluído · orientativo</span>
+                </p>
+                <p id="dossier-intro-lede" class="mt-4 max-w-2xl text-sm text-[#666666] font-light leading-relaxed">Consolidamos seu perfil estrutural, histórico químico e exposição ambiental em um resumo orientativo. Os indicadores abaixo apoiam a avaliação presencial — use a barra inferior para agendar e liberar seu protocolo.</p>
+            </header>
+
+            <section id="conflict-alert" class="hidden bg-[#FFF5F5] border border-[#FC8181] rounded-2xl p-6 md:p-8 shadow-sm fade-in-up delay-100 relative overflow-hidden" aria-live="polite">
+                <div class="absolute right-0 top-0 opacity-10"><i data-lucide="alert-triangle" class="w-40 h-40 -mt-10 -mr-10 text-[#E53E3E]"></i></div>
+                <div class="flex items-start relative z-10">
+                    <i data-lucide="shield-alert" class="w-8 h-8 text-[#E53E3E] mr-4 shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-medium text-[#C53030] mb-2" id="alert-title">Indício de Incompatibilidade Química</h3>
+                        <p class="text-sm md:text-base text-[#742A2A] font-light leading-relaxed" id="alert-message"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dossier-score-section" class="fade-in-up delay-150 flex flex-col items-center text-center" aria-labelledby="dossier-score-label">
+                <div class="relative w-40 h-40 flex items-center justify-center bg-white rounded-full border border-[#EBEBEB] shadow-sm flex-shrink-0">
+                    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 160 160" aria-hidden="true">
+                        <circle cx="80" cy="80" r="74" stroke="#F5F5F7" stroke-width="4" fill="none" />
+                        <circle id="dossier-ring" class="progress-ring__circle" cx="80" cy="80" r="74" stroke="#D97706" stroke-width="4" fill="none" stroke-dasharray="464.95" stroke-dashoffset="464.95" stroke-linecap="round" />
+                    </svg>
+                    <div class="text-center mt-2">
+                        <span class="block text-5xl font-light text-[#1A1A1A]" id="dos-score">--</span>
+                        <span class="block text-[10px] text-[#666666] normal-case tracking-normal mt-1" id="dossier-score-label">Indicador orientativo</span>
+                    </div>
+                </div>
+                <p class="text-2xl text-[#2D2D2D] font-medium mt-6 max-w-md leading-snug" id="dos-status-text">Atenção ao perfil do fio</p>
+            </section>
+
+            <section class="fade-in-up delay-200 pt-8 border-t border-[#EBEBEB]" aria-labelledby="dossier-symptoms-title">
+                <h2 class="text-sm font-medium text-[#2D2D2D] mb-4" id="dossier-symptoms-title">O que você reportou</h2>
+                <div id="dynamic-symptoms-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <section id="dossier-profile-section" class="fade-in-up delay-250 pt-8 border-t border-[#EBEBEB]" aria-labelledby="dossier-integrity-title">
+                <h2 class="text-sm font-medium text-[#2D2D2D] mb-4" id="dossier-integrity-title">Perfil do fio (estimativa)</h2>
+                <div class="bg-white border border-[#EBEBEB] rounded-xl p-5 space-y-5 text-left">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Estrutura</span>
+                            <span class="text-sm font-medium leading-snug capitalize" id="dos-struct">--</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Calibre</span>
+                            <span class="text-sm font-medium leading-snug capitalize" id="dos-caliber">--</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Lavagem</span>
+                            <span class="text-sm font-medium leading-snug" id="dos-wash">--</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#F0F0F0] pt-4 grid grid-cols-1 gap-3">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Recência Química</span>
+                            <span class="text-sm font-medium leading-snug break-words" id="dos-history-window">--</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Histórico Químico</span>
+                            <span class="text-sm font-medium leading-snug break-words" id="dos-history">--</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wide text-[#999999] mb-1">Rotina Diária</span>
+                            <span class="text-sm font-medium leading-snug capitalize text-[#D97706] break-words" id="dos-lifestyle-mixed">--</span>
+                        </div>
+                    </div>
+                </div>
+                <p id="dossier-projection-pill" class="mt-4 text-sm text-[#10B981] font-medium flex items-center justify-center md:justify-start bg-[#10B981]/10 px-3 py-2 rounded-full w-full md:w-max mx-auto md:mx-0">
+                    <i data-lucide="trending-up" class="w-4 h-4 mr-1 shrink-0" aria-hidden="true"></i>
+                    <span><span id="dossier-projection-label">Referência orientativa</span>: <span id="dos-proj">92</span>/100</span>
+                </p>
+            </section>
+
+            <section aria-labelledby="dossier-hydric-heading" class="fade-in-up delay-300 pt-8 border-t border-[#EBEBEB]">
+                <div class="border border-[#EBEBEB] bg-white rounded-xl p-5 text-left">
+                    <h2 id="dossier-hydric-heading" class="text-sm font-medium text-[#2D2D2D] mb-4">Estimativa de Composição Hídrico-Proteica</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-[#2D2D2D] font-medium">Água (Hidratação)</span><span class="text-[#666666]" id="bar-water-val">--%</span></div>
+                            <div class="integrity-bar"><div class="integrity-fill bg-sky-400" id="bar-water" style="width: 0%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-[#2D2D2D] font-medium">Lipídios (Oleosidade/Selagem)</span><span class="text-[#666666]" id="bar-lipids-val">--%</span></div>
+                            <div class="integrity-bar"><div class="integrity-fill bg-amber-500" id="bar-lipids" style="width: 0%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-[#2D2D2D] font-medium">Proteína (Força/Massa)</span><span class="text-[#666666]" id="bar-protein-val">--%</span></div>
+                            <div class="integrity-bar"><div class="integrity-fill bg-stone-500" id="bar-protein" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+                    <p id="dossier-hydric-legend" class="text-[10px] text-[#999999] font-light mt-3">Estimativa algorítmica. A avaliação presencial confirmará os valores absolutos.</p>
+                </div>
+            </section>
+
+            <section class="fade-in-up delay-300 pt-8 border-t border-[#EBEBEB] dossier-lazy-pending" data-dossier-lazy="environment" id="env-dashboard-section" aria-labelledby="dossier-env-title" aria-busy="true">
+                <h2 id="dossier-env-title" class="text-sm font-medium text-[#2D2D2D] mb-4">Dashboard de Agressão Ambiental e Climática</h2>
+                <div class="dossier-lazy-skeleton" aria-hidden="true">
+                    <div class="dossier-lazy-skeleton__line dossier-lazy-skeleton__line--short"></div>
+                    <div class="dossier-lazy-skeleton__line dossier-lazy-skeleton__line--long"></div>
+                </div>
+                <details class="env-dashboard-drawer group" id="env-dashboard-drawer">
+                    <summary class="env-dashboard-drawer__trigger gl-dark-card rounded-2xl p-5 md:p-6 cursor-pointer list-none shadow-lg border border-[#333333]">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-white text-sm md:text-base font-light line-clamp-2 sm:line-clamp-none leading-relaxed">Perfil: <strong class="text-[#D97706] dyn-profile">--</strong></p>
+                            </div>
+                            <div class="flex items-center gap-3 shrink-0">
+                                <span class="px-3 py-1.5 border border-[#D97706]/30 text-[#D97706] text-[10px] uppercase font-bold rounded-full bg-[#D97706]/10 whitespace-nowrap max-sm:whitespace-normal max-sm:text-center">Exposição: <span id="dark-exposure-index">--</span>/100</span>
+                                <span class="env-dashboard-drawer__chevron text-[#666666] transition-transform group-open:rotate-180" aria-hidden="true"><i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                            </div>
+                        </div>
+                    </summary>
+
+                    <div class="env-dashboard-drawer__panel gl-dark-card rounded-b-2xl md:rounded-2xl md:mt-2 p-6 md:p-10 shadow-2xl relative overflow-hidden border border-t-0 md:border border-[#333333]">
+                    <div class="absolute -right-10 -bottom-10 opacity-5 max-sm:opacity-0 pointer-events-none" aria-hidden="true"><i data-lucide="globe" class="w-80 h-80 max-sm:w-40 max-sm:h-40 text-white"></i></div>
+                    <div class="relative z-10">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="border-l-2 border-[#D97706] pl-4">
+                                <p class="text-[10px] text-[#A3A3A3] uppercase tracking-wide sm:tracking-widest mb-1"><i data-lucide="droplets" class="w-3 h-3 inline mr-1 text-[#D97706]"></i> Agressão Hídrica (Rede + Lavagem)</p>
+                                <p class="text-white font-medium text-sm mb-1" id="dark-city-db">--</p>
+                                <p class="text-xs text-[#666666] font-light" id="dark-water-subtitle">Stress surfactante e minerais estimados.</p>
+                            </div>
+                            <div class="border-l-2 border-[#D97706] pl-4">
+                                <p class="text-[10px] text-[#A3A3A3] uppercase tracking-wide sm:tracking-widest mb-1"><i data-lucide="wind" class="w-3 h-3 inline mr-1 text-[#D97706]"></i> Tendência de Exposição Ambiental</p>
+                                <p class="text-white font-medium text-sm mb-1" id="dark-pollution-level">--</p>
+                                <p class="text-xs text-[#666666] font-light" id="dark-pollution-risk">--</p>
+                            </div>
+                            <div class="border-l-2 border-[#D97706] pl-4">
+                                <p class="text-[10px] text-[#A3A3A3] uppercase tracking-wide sm:tracking-widest mb-1"><i data-lucide="calendar" class="w-3 h-3 inline mr-1 text-[#D97706]"></i> Impacto Sazonal</p>
+                                <p class="text-white font-medium text-sm mb-1" id="dark-season-name">--</p>
+                                <p class="text-xs text-[#666666] font-light" id="dark-season-risk">--</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 bg-[#222222] p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6 border border-[#333]">
+                            <div class="w-full md:w-1/3">
+                                <p class="text-[10px] uppercase tracking-wide sm:tracking-widest text-[#D97706] font-bold mb-2">Estimativa de Desvio de pH</p>
+                                <p class="text-xs text-[#A3A3A3] font-light" id="dark-ph-note">Estimativa: água de rede e frequência de lavagem tendem a elevar o pH cuticular.</p>
+                            </div>
+                            <div class="w-full md:w-2/3 flex items-center gap-4">
+                                <div class="text-center"><span class="block text-white font-mono text-xl">4.5</span><span class="text-[9px] text-[#666]">Fio Ideal</span></div>
+                                <div class="flex-1 h-2 bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 rounded-full relative">
+                                    <div id="dark-ph-marker" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full shadow border-2 border-red-500 transition-all duration-700" style="left: 85%"></div>
+                                </div>
+                                <div class="text-center"><span class="block text-red-400 font-mono text-xl" id="dark-ph-value">7.0</span><span class="text-[9px] text-[#666]">Estimativa de pH</span></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex items-start">
+                            <i data-lucide="activity" class="w-4 h-4 text-[#D97706] mr-3 mt-0.5"></i>
+                            <p class="text-xs text-[#A3A3A3] font-light" id="dark-mixed-alert">Rotina mista não afeta a retenção lipídica.</p>
+                        </div>
+
+                        <div id="regional-water-brief" class="mt-8 pt-6 border-t border-[#333333]" aria-live="polite"></div>
+                    </div>
+                    </div>
+                </details>
+            </section>
+
+            <section id="dossier-matrix-section" class="fade-in-up delay-300 pt-8 border-t border-[#EBEBEB]">
+                <div class="flex flex-wrap items-center gap-2 mb-4">
+                    <h2 class="text-sm font-medium text-[#2D2D2D] mb-0" id="bancada-section-title">Linha sugerida na avaliação presencial</h2>
+                    <span class="text-[10px] text-[#D97706] font-medium uppercase tracking-wide sm:tracking-widest flex items-center bg-[#FDF1E6] px-3 py-1 rounded-full"><i data-lucide="lock" class="w-3 h-3 mr-1"></i> Acesso Restrito</span>
+                </div>
+                <div class="mb-6 p-5 bg-white border border-[#EBEBEB] rounded-2xl">
+                    <p class="text-[10px] uppercase tracking-wide sm:tracking-widest text-[#D97706] font-bold mb-1" id="bancada-categoria">—</p>
+                    <p class="text-sm text-[#2D2D2D] font-medium mb-2" id="bancada-foco">—</p>
+                    <p class="text-xs text-[#999999] font-light" id="bancada-rationale">—</p>
+                </div>
+
+                <div id="protocol-dossier-panel" class="gl-dark-card mb-6 rounded-2xl p-6 md:p-8 border border-[#333333]" aria-live="polite"></div>
+
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-[#2D2D2D] mb-4">Ativos Necessários</h3>
+                    <p id="dossier-blur-hint" class="text-xs text-[#999999] font-light mb-4 leading-relaxed">Detalhes completos de aplicação são validados presencialmente na unidade.</p>
+                    <div id="ativos-necessarios-panel" class="bg-white border border-[#EBEBEB] rounded-2xl p-6 md:p-8 shadow-sm" aria-live="polite"></div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-sm font-medium text-[#2D2D2D] mb-4">Protocolo de Aplicação</h3>
+                    <div id="protocolo-aplicacao-wrapper" class="protocol-application protocol-application--locked relative rounded-2xl overflow-hidden">
+                        <div id="protocolo-aplicacao-content" class="protocol-application__content bg-white border border-[#EBEBEB] rounded-2xl p-6 md:p-8 shadow-sm" aria-live="polite"></div>
+                        <div id="protocol-lock-overlay" class="protocol-lock-overlay" aria-hidden="false">
+                            <i data-lucide="lock" class="protocol-lock-overlay__icon w-5 h-5" aria-hidden="true"></i>
+                            <span class="protocol-lock-overlay__text">PROTOCOLO RESERVADO PARA VALIDAÇÃO PRESENCIAL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <div id="dossier-chemical-footnote" class="hidden max-w-3xl mx-auto mb-10 px-4 py-4 bg-[#FFFBF5] border border-[#FDE68A] rounded-xl text-xs text-[#92400E] leading-relaxed fade-in-up delay-300" role="note" aria-live="polite">
+                <p class="text-[10px] uppercase tracking-wide sm:tracking-widest font-semibold text-[#D97706] mb-2" id="dossier-chemical-footnote-title">Nota sobre henê ou formol</p>
+                <p id="dossier-chemical-footnote-body">Procedimentos com henê ou formol alteram a resposta do fio. Possível incompatibilidade com descoloração ou alisamento — a confirmação e teste de mecha, se necessário, ocorrem na avaliação técnica presencial.</p>
+            </div>
+
+            <div id="dossier-haircut-footnote" class="hidden max-w-3xl mx-auto mb-10 px-4 py-4 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs text-[#334155] leading-relaxed fade-in-up delay-300" role="note" aria-live="polite">
+                <p class="text-[10px] uppercase tracking-wide sm:tracking-widest font-semibold text-[#D97706] mb-2" id="dossier-haircut-footnote-title">Pontas ralas ou extrafinas · orientação de corte</p>
+                <p id="dossier-haircut-footnote-body">Quando a fibra distal perde massa, protocolos semipermanentes internacionais não restauram o diâmetro nas pontas. A orientação pode incluir corte de limpeza — validado na avaliação técnica presencial.</p>
+            </div>
+
+            <section id="molecular-manifesto-unit" class="fade-in-up delay-300 pt-8 border-t border-[#EBEBEB]" data-molecular-marquee data-marquee-block="manifesto" aria-labelledby="molecular-manifesto-title"></section>
+
+            <!-- FAQ + RODAPÉ LEGAL -->
+            <section class="pt-16 fade-in-up delay-300 dossier-lazy-pending" data-dossier-lazy="faq" aria-busy="true">
+                <div class="dossier-lazy-skeleton" aria-hidden="true">
+                    <div class="dossier-lazy-skeleton__line dossier-lazy-skeleton__line--short"></div>
+                    <div class="space-y-2 mt-3">
+                        <div class="h-12 bg-[#F5F5F7] rounded-xl animate-pulse"></div>
+                        <div class="h-12 bg-[#F5F5F7] rounded-xl animate-pulse"></div>
+                    </div>
+                </div>
+                <div class="max-w-3xl mx-auto text-left">
+                    <h3 class="text-xl font-medium mb-8 text-center text-[#2D2D2D]">Perguntas Frequentes</h3>
+                    <div id="faq-accordion" class="space-y-4"></div>
+                </div>
+
+                <div class="legal-disclaimer max-w-4xl mx-auto px-4">
+                    <p class="text-[11px] text-[#666666] text-center leading-relaxed font-light">
+                        <strong class="text-[#2D2D2D] font-medium">Aviso legal:</strong> <span id="legal-disclaimer-main">Mapeamento estético preparatório — não substitui avaliação presencial no estúdio. Indicadores de exposição, pH e integridade são estimativas orientativas.</span>
+                    </p>
+                    <p class="text-xs text-[#A3A3A3] text-center uppercase tracking-wide sm:tracking-widest mt-4 leading-relaxed" id="legal-disclaimer-footer">
+                        Jo Manto · mapeamento capilar. Conteúdo informativo e sugestivo — confirmação na avaliação técnica presencial.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-4 mt-8 pb-4 text-center">
+                    <button type="button"
+                            id="btn-staff-access"
+                            onclick="GLProMapeamento.openStaffAccess()"
+                            aria-label="PIN técnico Equipe CTR"
+                            class="inline-flex items-center justify-center gap-1 text-xs opacity-40 hover:opacity-100 transition-opacity text-[#999999] bg-transparent border-0 p-1 normal-case tracking-normal font-normal">
+                        PIN · Equipe CTR
+                    </button>
+                </div>
+            </section>
+
+        </div>
+        </div>
+
+        <div id="dossier-bottom-cta" class="dossier-cta-bar dossier-cta-bar--bottom dossier-cta-bar--sticky view-hidden" role="region" aria-label="Agendar avaliação presencial">
+            <button type="button" class="dossier-cta-bar__btn dossier-cta-bar__btn--primary dossier-cta-bar__btn--wide w-full" onclick="GLProMapeamento.schedulePresentialVisit(event)">
+                <span class="dossier-cta-bar__text">
+                    <span class="dossier-cta-bar__label">AGENDAR AVALIAÇÃO PRESENCIAL</span>
+                    <span class="dossier-cta-bar__sub">Liberar meu protocolo exclusivo via WhatsApp</span>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal: Acesso da Equipe Técnica (PIN presencial) -->
+    <div id="staff-access-modal" class="staff-access-modal view-hidden" role="dialog" aria-modal="true" aria-labelledby="staff-modal-title">
+        <div class="staff-access-modal__backdrop" onclick="GLProMapeamento.closeStaffAccess()" aria-hidden="true"></div>
+        <div class="staff-access-modal__panel gl-dark-card">
+            <div class="flex items-center justify-between mb-6">
+                <h2 id="staff-modal-title" class="text-sm uppercase tracking-wide sm:tracking-widest text-[#A3A3A3] font-medium">Equipe CTR · acesso técnico</h2>
+                <button type="button" onclick="GLProMapeamento.closeStaffAccess()" class="inline-flex items-center justify-center min-h-11 min-w-11 px-4 py-3 text-[#666666] hover:text-white transition-colors" aria-label="Fechar">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <p class="text-xs text-[#666666] font-light mb-6 leading-relaxed">Insira o PIN de 4 dígitos para revelar o protocolo de aplicação durante o atendimento presencial.</p>
+            <label for="staff-pin-input" class="block text-[10px] uppercase tracking-wide sm:tracking-widest text-[#666666] font-medium mb-2">PIN de Desbloqueio</label>
+            <input type="password" id="staff-pin-input" inputmode="numeric" maxlength="4" pattern="[0-9]*" autocomplete="off" placeholder="••••" class="staff-access-modal__input w-full mb-2" />
+            <p id="staff-pin-error" class="staff-access-modal__error view-hidden text-xs text-red-400 mb-4">PIN incorreto. Tente novamente.</p>
+            <div class="flex gap-3 mt-4">
+                <button type="button" onclick="GLProMapeamento.submitStaffPin()" class="flex-1 py-3 bg-[#D97706] text-white rounded-xl text-[10px] uppercase tracking-wide sm:tracking-widest font-bold hover:bg-[#b46204] transition-colors">Desbloquear</button>
+                <button type="button" onclick="GLProMapeamento.closeStaffAccess()" class="flex-1 py-3 border border-[#333333] text-[#A3A3A3] rounded-xl text-[10px] uppercase tracking-wide sm:tracking-widest font-medium hover:border-[#666666] hover:text-white transition-colors">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rotatoria ativa · manifesto molecular + arsenal (fixo no funil) -->
+    <aside id="molecular-strip-root" class="molecular-strip-root" data-molecular-marquee data-marquee-block="roundabout" aria-label="Para cada dano, uma resposta molecular exata"></aside>
+
+    <!-- ========================================================================= -->
+    <!-- ENGINE DINÂMICO V16 (JS) - BLINDADO CONTRA BUGS NULL E COMPLETO           -->
+    <!-- ========================================================================= -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>

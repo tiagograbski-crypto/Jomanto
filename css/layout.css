@@ -1,0 +1,219 @@
+/**
+ * Layout Jo Manto — grids e flex responsivos (fallback + reforço)
+ * Garante distribuição correta mesmo se utilitários Tailwind falharem.
+ */
+
+.site-container {
+    width: 100%;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-container--narrow {
+    max-width: 64rem;
+}
+
+/* ── Trust bar ── */
+
+#trust-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1rem;
+    align-items: start;
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    #trust-bar {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+}
+
+.trust-bar-kicker {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.trust-stat-divider {
+    display: none;
+}
+
+/* ── Grids base ── */
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.grid-cols-1 {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-10 { gap: 2.5rem; }
+.gap-12 { gap: 3rem; }
+
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-stretch { align-items: stretch; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+
+@media (min-width: 640px) {
+    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .sm\:flex-row { flex-direction: row; }
+}
+
+@media (min-width: 768px) {
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .md\:flex-row { flex-direction: row; }
+    .md\:order-1 { order: 1; }
+    .md\:order-2 { order: 2; }
+    .md\:w-1\/2 { width: 50%; }
+    .md\:gap-16 { gap: 4rem; }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .lg\:grid-cols-\[0\.8fr_1\.2fr\] { grid-template-columns: 0.8fr 1.2fr; }
+    .lg\:grid-cols-\[0\.85fr_1\.15fr\] { grid-template-columns: 0.85fr 1.15fr; }
+    .lg\:grid-cols-\[0\.9fr_1\.1fr\] { grid-template-columns: 0.9fr 1.1fr; }
+    .lg\:gap-16 { gap: 4rem; }
+    .lg\:gap-20 { gap: 5rem; }
+}
+
+@media (min-width: 1280px) {
+    .xl\:grid-cols-\[minmax\(0\,1fr\)_minmax\(0\,1\.15fr\)\] {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:grid-cols-\[0\.9fr_1\.1fr\] { grid-template-columns: 0.9fr 1.1fr; }
+    .md\:grid-cols-\[1fr_auto\] { grid-template-columns: 1fr auto; }
+}
+
+/* ── Nav (fallback quando Tailwind não carrega) ── */
+
+#site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#site-nav .site-nav-desktop {
+    display: none;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    #site-nav .site-nav-desktop {
+        display: flex;
+    }
+
+    #site-nav .mobile-menu-button {
+        display: none;
+    }
+}
+
+/* ── Footer grid ── */
+
+#site-footer .footer-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    #site-footer .footer-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        gap: 3rem;
+    }
+}
+
+#site-footer .footer-chip-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    #site-footer .footer-chip-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    #site-footer .footer-chip-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    #site-footer .footer-chip-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ── GL PRO categories (injetado via JS) ── */
+
+#gl-pro-categories {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    #gl-pro-categories {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ── Editorial teasers (injetado via JS) ── */
+
+#editorial-teasers {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    #editorial-teasers {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ── Portfólio ── */
+
+[data-portfolio-grid] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    [data-portfolio-grid] {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    [data-portfolio-grid] {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
