@@ -7,7 +7,7 @@ const NAV_ITEMS = [
 const PAGE_HERO_TONE = {
     hub: 'light',
     visagismo: 'light',
-    terapias: 'dim'
+    terapias: 'balanced'
 };
 
 const FUNNEL_PERSONALIZATION = {
@@ -76,7 +76,7 @@ function renderNav(currentPage, heroTone) {
         </button>
         <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
             <div class="mobile-menu-panel">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-8">Navegação</p>
+                <p class="type-kicker type-kicker--taupe mb-8">Navegação</p>
                 <div class="space-y-1">
                     ${mobileLinks}
                 </div>
@@ -122,19 +122,31 @@ function initMobileNav() {
 function initScrolledNav() {
     const nav = document.getElementById('site-nav');
     const hero = document.getElementById('hero');
+    const usePillNav = document.body.classList.contains('page-visagismo');
+
     if (!nav) return;
 
     if (!hero) {
         nav.classList.add('nav--scrolled');
         nav.classList.remove('nav--on-hero');
+        if (usePillNav) nav.classList.add('nav--pill');
         return;
     }
 
     const onScroll = () => {
         const heroBottom = hero.offsetTop + hero.offsetHeight;
         const scrolled = window.scrollY > heroBottom - 80;
+
+        if (usePillNav) {
+            nav.classList.toggle('nav--pill', scrolled);
+            nav.classList.toggle('nav--scrolled', scrolled);
+            nav.classList.toggle('nav--on-hero', !scrolled);
+            return;
+        }
+
         nav.classList.toggle('nav--scrolled', scrolled);
         nav.classList.toggle('nav--on-hero', !scrolled);
+        nav.classList.remove('nav--pill');
     };
 
     onScroll();
@@ -185,16 +197,16 @@ function renderSiteFooter(page) {
             <div class="footer-layout grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-10 md:gap-12 xl:gap-16 2xl:gap-20 items-start">
                 <div class="text-center md:text-left max-w-md mx-auto md:mx-0 w-full">
                     <h2 class="font-serif text-3xl md:text-4xl 2xl:text-[2.75rem] mb-2 tracking-wide">Jo Manto</h2>
-                    <p class="text-[10px] tracking-[0.3em] uppercase text-taupe mb-6 md:mb-8">Visagismo &amp; Saúde Capilar</p>
-                    <p class="text-xs font-light text-espresso/70 mb-2">Atendimento exclusivo com hora marcada.</p>
-                    <p id="site-address" class="text-xs font-light text-espresso/70 leading-relaxed mb-4"></p>
-                    <div class="footer-chip-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 xl:grid-cols-3 gap-2 mb-6 text-[10px] uppercase tracking-widest text-taupe">
+                    <p class="type-kicker type-kicker--taupe mb-6 md:mb-8">Visagismo &amp; Saúde Capilar</p>
+                    <p class="text-xs font-normal text-espresso/70 mb-2">Atendimento exclusivo com hora marcada.</p>
+                    <p id="site-address" class="text-xs font-normal text-espresso/70 leading-relaxed mb-4"></p>
+                    <div class="footer-chip-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-2 mb-6 type-kicker type-kicker--taupe">
                         <span class="border border-mist bg-canvas/45 px-3 py-2">Chapecó e região</span>
                         <span class="border border-mist bg-canvas/45 px-3 py-2">Atendimento 1:1</span>
                         <span class="border border-mist bg-canvas/45 px-3 py-2">Hora marcada</span>
                     </div>
                     <a id="maps-directions-link" href="#" target="_blank" rel="noopener noreferrer"
-                       class="inline-block text-[10px] uppercase tracking-widest text-champagne hover:text-espresso transition-colors mb-8">
+                       class="inline-block type-link type-kicker--champagne hover:text-espresso mb-8">
                         Como chegar &rarr;
                     </a>
                     <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-xs border-t border-mist pt-6">
@@ -204,11 +216,11 @@ function renderSiteFooter(page) {
                     </div>
                 </div>
                 <div class="footer-map-wrap w-full">
-                    <p class="text-[10px] uppercase tracking-[0.2em] text-taupe mb-3 text-center md:text-left">Localização</p>
+                    <p class="type-kicker type-kicker--taupe mb-3 text-center md:text-left">Localização</p>
                     <div id="footer-map" class="footer-map" role="region" aria-label="Mapa — Jo Manto, Chapecó"></div>
                 </div>
             </div>
-            <p class="text-center text-[10px] text-taupe mt-10 md:mt-12 pt-6 border-t border-mist">
+            <p class="text-center type-kicker type-kicker--taupe mt-10 md:mt-12 pt-6 border-t border-mist">
                 &copy; <span id="footer-year"></span> Jo Manto. Todos os direitos reservados.
             </p>
         </div>
@@ -541,11 +553,17 @@ function initTestimonialsRail() {
         };
 
         const updateRailState = () => {
+            const cardWidth = cards[0]?.offsetWidth || 0;
+            const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0') || 20;
+            const fitsAll = track.clientWidth >= (cards.length * cardWidth) + ((cards.length - 1) * gap) - 4;
+            rail.classList.toggle('testimonials-rail--desktop-grid', fitsAll);
+
             const maxScroll = track.scrollWidth - track.clientWidth;
-            const atEnd = maxScroll <= 4 || track.scrollLeft >= maxScroll - 8;
+            const atEnd = fitsAll || maxScroll <= 4 || track.scrollLeft >= maxScroll - 8;
             rail.classList.toggle('testimonials-rail--scrolled-end', atEnd);
 
-            if (!cards.length) return;
+            if (!cards.length || fitsAll) return;
+
             const trackRect = track.getBoundingClientRect();
             const midpoint = trackRect.left + trackRect.width / 2;
             let closestIndex = 0;
@@ -569,7 +587,7 @@ function initTestimonialsRail() {
                 const index = Number(dot.dataset.dotIndex);
                 const card = cards[index];
                 if (!card) return;
-                track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+                card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             });
         });
 

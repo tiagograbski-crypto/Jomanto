@@ -1,7 +1,4 @@
-/*
- * Legado: tema Tailwind agora vive em css/tailwind-theme.css (@theme v4).
- * Mantido apenas para referência de cores — não carregar nas páginas HTML.
- */
+/* Tema Tailwind v3 (Play CDN) — site principal e iframe mapeamento (isolado). */
 tailwind.config = {
     theme: {
         extend: {
@@ -11,6 +8,7 @@ tailwind.config = {
                 parchment: '#EAE4DA',
                 blush: '#E8DDD4',
                 espresso: '#3D3835',
+                secondary: '#6B635A',
                 taupe: '#7A7268',
                 champagne: '#C9B99A',
                 clay: '#8B6658',

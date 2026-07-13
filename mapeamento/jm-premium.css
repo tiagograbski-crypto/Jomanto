@@ -1,6 +1,7 @@
 /**
  * Jo Manto · Premium funnel UI (P0/P1)
  */
+@import url('../css/typography.css');
 
 /* ── Progress segment dots ── */
 .jm-progress-label {
@@ -262,5 +263,162 @@ body.jo-manto-skin .cross-preload-context .cross-preload-context__label {
 @media (prefers-reduced-motion: reduce) {
     .jm-progress-dot {
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* ── P0 typography · mapeamento aligned to site tokens ── */
+body.jo-manto-skin {
+    color: var(--jm-espresso);
+}
+
+body.jo-manto-skin .text-\[\#666666\],
+body.jo-manto-skin .text-\[\#999999\],
+body.jo-manto-skin .text-\[\#A3A3A3\] {
+    color: var(--jm-text-secondary);
+}
+
+body.jo-manto-skin .text-\[\#1A1A1A\],
+body.jo-manto-skin .text-\[\#2D2D2D\] {
+    color: var(--jm-espresso);
+}
+
+body.jo-manto-skin p.font-light,
+body.jo-manto-skin li.font-light,
+body.jo-manto-skin ul.font-light,
+body.jo-manto-skin .leading-relaxed.font-light,
+body.jo-manto-skin .cross-preload-status.font-light {
+    font-weight: var(--jm-weight-body);
+}
+
+body.jo-manto-skin h1.font-light,
+body.jo-manto-skin h2.font-light,
+body.jo-manto-skin h3.font-light,
+body.jo-manto-skin .field-input.font-light {
+    font-weight: var(--jm-weight-display);
+}
+
+body.jo-manto-skin .text-\[10px\] {
+    font-size: var(--jm-type-kicker);
+    letter-spacing: var(--jm-tracking-kicker);
+}
+
+body.jo-manto-skin .text-\[9px\] {
+    font-size: var(--jm-type-kicker);
+}
+
+body.jo-manto-skin .text-xs.text-\[\#999999\],
+body.jo-manto-skin .text-xs.text-\[\#A3A3A3\],
+body.jo-manto-skin .text-xs.text-\[\#666666\] {
+    font-size: var(--jm-type-caption);
+}
+
+/* Dark dossier panels keep light-on-dark contrast */
+body.jo-manto-skin .gl-dark-card .text-\[\#666666\],
+body.jo-manto-skin .gl-dark-card .text-\[\#999999\],
+body.jo-manto-skin .gl-dark-card .text-\[\#A3A3A3\],
+body.jo-manto-skin .gl-dark-card .text-secondary {
+    color: rgba(250, 248, 245, 0.88);
+}
+
+/* ── P2 · dossier reading comfort toggle ── */
+.dossier-reading-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 20;
+}
+
+.dossier-reading-toggle {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--jm-mist);
+    border-radius: var(--jm-radius-pill);
+    background: var(--jm-surface-pure);
+    color: var(--jm-espresso);
+    font-family: var(--jm-font-sans);
+    font-size: var(--jm-type-kicker);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: var(--jm-shadow-elevated);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.dossier-reading-toggle:hover {
+    border-color: var(--jm-accent);
+    color: var(--jm-accent);
+}
+
+.dossier-reading-toggle:focus-visible {
+    outline: 2px solid var(--jm-focus-ring);
+    outline-offset: 2px;
+}
+
+.dossier-reading-toggle[aria-pressed="true"] {
+    border-color: var(--jm-accent);
+    background: var(--jm-accent-soft);
+    color: var(--jm-accent-hover);
+}
+
+.dossier-reading-toggle__icon {
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+#view-dossier.dossier-reading-comfort {
+    --jm-type-body: 1.0625rem;
+    --jm-type-small: 0.9375rem;
+    --jm-type-kicker: 0.75rem;
+    --jm-type-caption: 0.875rem;
+    --jm-leading-body: 1.72;
+}
+
+#view-dossier.dossier-reading-comfort .text-sm {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+#view-dossier.dossier-reading-comfort .text-xs {
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+#view-dossier.dossier-reading-comfort .text-lg {
+    font-size: 1.1875rem;
+}
+
+#view-dossier.dossier-reading-comfort .text-xl {
+    font-size: 1.3125rem;
+}
+
+#view-dossier.dossier-reading-comfort .text-2xl {
+    font-size: 1.75rem;
+}
+
+#view-dossier.dossier-reading-comfort #dossier-title {
+    font-size: clamp(2rem, 5.5vw, 3.25rem);
+}
+
+#view-dossier.dossier-reading-comfort #dos-status-text {
+    font-size: 1.625rem;
+}
+
+#view-dossier.dossier-reading-comfort .dossier-embed-pane .text-4xl {
+    font-size: 2.75rem;
+}
+
+@media (prefers-contrast: more) {
+    body.jo-manto-skin .dossier-reading-toggle {
+        border-color: var(--jm-espresso);
+    }
+
+    body.jo-manto-skin .dossier-reading-toggle[aria-pressed="true"] {
+        background: var(--jm-surface-pure);
+        color: var(--jm-espresso);
+        border-width: 2px;
     }
 }

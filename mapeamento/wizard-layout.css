@@ -51,7 +51,12 @@ body.jo-manto-skin:not(.is-embed) #view-funnel.funnel-shell {
 body.jo-manto-skin.is-embed {
     height: 100% !important;
     min-height: 100% !important;
+    max-height: 100% !important;
     overflow: hidden !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    width: 100%;
 }
 
 body.jo-manto-skin.is-embed > .fixed {
@@ -114,5 +119,69 @@ body.jo-manto-skin:not(.is-embed) #view-dossier {
         min-height: 0 !important;
         height: 100% !important;
         max-height: 100% !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Embed skin · autoridade única para iframe Jo Manto (terapias.html)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+html.is-embed {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Neutraliza utilitários Tailwind do host (min-h-screen, items-center) no iframe */
+body.jo-manto-skin.is-embed #view-funnel.funnel-shell {
+    flex: 1 1 auto;
+}
+
+/* Subpanes do histórico químico: scroll interno (style.css legado usava overflow:hidden) */
+body.jo-manto-skin .step-subpane {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+}
+
+body.jo-manto-skin #step-2 .step-subpane {
+    justify-content: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Mobile: rodapé docked não cobre conteúdo do passo */
+body.jo-manto-skin.is-mobile-view.funnel-footer-active .steps-stage > .step-pane:not(.hidden),
+body.jo-manto-skin.is-mobile-view.funnel-footer-docked .steps-stage > .step-pane:not(.hidden) {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Dossiê embed: painéis com scroll interno */
+body.jo-manto-skin.is-embed .dossier-embed-pane {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.jo-manto-skin.is-embed .dossier-embed-wizard:not(.view-hidden) {
+    max-height: 100%;
+    background: var(--jm-canvas, #FAF8F5);
+}
+
+body.jo-manto-skin.is-embed .dossier-embed-wizard__nav {
+    background: rgba(250, 248, 245, 0.96);
+    border-top: 1px solid var(--jm-mist, #D8D2C8);
+}
+
+/* Intro do funil: centralização vertical no embed */
+body.jo-manto-skin.is-embed #step-intro:not(.hidden) {
+    justify-content: center;
+    padding-bottom: 1.5rem;
+}
+
+@media (max-width: 639px) {
+    body.jo-manto-skin.is-embed #step-intro:not(.hidden) {
+        justify-content: flex-start;
+        padding-top: 1.25rem;
     }
 }

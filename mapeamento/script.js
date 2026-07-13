@@ -1,6 +1,7 @@
 import { createMapeamentoApp } from './mapeamento-app.js';
 import { applyMobileView, initMolecularMarquees } from './molecular-marquee.js';
 import { initPerfLiteMode } from './mapeamento-logic.js';
+import { initReadingComfortToggle } from './reading-comfort.js';
 
 initPerfLiteMode(window);
 
@@ -17,6 +18,7 @@ globalThis.GLProMapeamento = app;
 document.addEventListener('DOMContentLoaded', function () {
   applyMobileView(document);
   initMolecularMarquees(document);
+  initReadingComfortToggle(document);
   window.matchMedia('(max-width: 639px)').addEventListener('change', function () {
     applyMobileView(document);
     const stripRoot = document.getElementById('molecular-strip-root');

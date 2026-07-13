@@ -810,7 +810,7 @@ export function buildRegionalWaterBriefMarkup(envProfile, userData) {
   const criticalCross = washDaily && symptoms.includes('porosidade');
 
   let html = '<div class="regional-water-brief border-l-2 border-[#D97706] pl-4 md:pl-5">';
-  html += '<p class="text-[10px] uppercase tracking-wide sm:tracking-widest text-[#D97706] font-bold mb-2">Assinatura hídrica · Oeste/Sudoeste SC</p>';
+  html += '<p class="type-kicker type-kicker--amber mb-2">Assinatura hídrica · Oeste/Sudoeste SC</p>';
   html += '<p class="text-sm font-normal leading-relaxed mb-4">';
   html += 'Captação via bacias Lajeado São José e Rio Uruguai. Cruzar rotina reportada × indicadores do fio ';
   html += 'é mais preciso do que índices genéricos de qualidade da água para orientar o protocolo presencial.';
@@ -833,13 +833,13 @@ export function buildRegionalWaterBriefMarkup(envProfile, userData) {
   }
 
   if (envProfile.drought && envProfile.drought.active) {
-    html += '<p class="mt-4 text-[#A3A3A3] text-xs font-light leading-relaxed border border-[#333333] rounded-lg px-3 py-2 bg-[#222222]/60">';
-    html += '<span class="text-[#D97706] font-medium uppercase tracking-wide sm:tracking-widest text-[10px] block mb-1">' + envProfile.drought.label + '</span>';
+    html += '<p class="mt-4 text-secondary text-xs font-normal leading-relaxed border border-[#333333] rounded-lg px-3 py-2 bg-[#222222]/60">';
+    html += '<span class="type-kicker type-kicker--amber block mb-1">' + envProfile.drought.label + '</span>';
     html += envProfile.drought.note;
     html += '</p>';
   }
 
-  html += '<p class="mt-4 text-[#666666] text-[10px] font-light leading-relaxed italic">' + WEST_SC_WATER_FOOTNOTE + '</p>';
+  html += '<p class="mt-4 type-body type-body--sm type-body--secondary italic">' + WEST_SC_WATER_FOOTNOTE + '</p>';
   html += '</div>';
   validateLexicalCompliance(html);
   return html;
@@ -913,7 +913,7 @@ export function buildApplicationProtocol(userData, envProfile) {
  */
 export function buildAtivosNecessariosMarkup(ativos) {
   if (!ativos || ativos.length === 0) {
-    return '<p class="text-sm text-[#666666] font-light">Ativos serão definidos na validação presencial com base no mapeamento.</p>';
+    return '<p class="text-sm text-secondary font-normal">Ativos serão definidos na validação presencial com base no mapeamento.</p>';
   }
 
   const preview = ativos.slice(0, ATIVOS_PREVIEW_COUNT);
@@ -925,7 +925,7 @@ export function buildAtivosNecessariosMarkup(ativos) {
       validateLexicalCompliance(ativo);
       listHtml += '<li class="flex items-start gap-3">';
       listHtml += '<span class="ativos-necessarios-dot mt-2 flex-shrink-0"></span>';
-      listHtml += '<span class="text-[#2D2D2D] text-sm md:text-base font-medium leading-relaxed">' + ativo + '</span>';
+      listHtml += '<span class="text-espresso text-sm md:text-base font-medium leading-relaxed">' + ativo + '</span>';
       listHtml += '</li>';
     });
     listHtml += '</ul>';
@@ -955,7 +955,7 @@ export function buildAtivosNecessariosMarkup(ativos) {
  */
 export function buildProtocolApplicationMarkup(steps) {
   if (!steps || steps.length === 0) {
-    return '<p class="text-sm text-[#666666] font-light">Sequência de aplicação reservada para validação presencial.</p>';
+    return '<p class="text-sm text-secondary font-normal">Sequência de aplicação reservada para validação presencial.</p>';
   }
 
   let html = '<ol class="protocol-application-steps space-y-5">';
@@ -964,10 +964,10 @@ export function buildProtocolApplicationMarkup(steps) {
     html += '<li class="protocol-application-step flex items-start gap-4">';
     html += '<span class="protocol-application-step__num flex-shrink-0">' + step.order + '</span>';
     html += '<div class="flex-1 min-w-0">';
-    html += '<p class="text-[10px] uppercase tracking-wide sm:tracking-widest text-[#D97706] font-bold mb-1">' + step.title + '</p>';
-    html += '<p class="text-[#2D2D2D] text-sm font-medium mb-1">' + step.product + '</p>';
-    html += '<p class="text-[#666666] text-xs font-light mb-2">Ativos: ' + step.ativos + '</p>';
-    html += '<p class="text-[#2D2D2D] text-sm font-light leading-relaxed">' + step.instruction + '</p>';
+    html += '<p class="type-kicker type-kicker--amber mb-1">' + step.title + '</p>';
+    html += '<p class="text-espresso text-sm font-medium mb-1">' + step.product + '</p>';
+    html += '<p class="text-secondary text-xs font-normal mb-2">Ativos: ' + step.ativos + '</p>';
+    html += '<p class="text-espresso text-sm font-normal leading-relaxed">' + step.instruction + '</p>';
     html += '</div></li>';
   });
   html += '</ol>';

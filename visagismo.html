@@ -18,33 +18,27 @@
     <meta name="twitter:title" content="Visagismo | Jo Manto — Chapecó">
     <meta name="twitter:description" content="Visagismo e corte estruturado com Jo Manto em Chapecó, SC. Consultoria de imagem personalizada para descobrir a estrutura ideal do seu rosto.">
     <meta name="twitter:image" content="https://jomanto.com.br/images/f28e8093-af12-47b3-be8f-046078ea4e0d.jpg">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @import "css/tailwind-theme.css";
-    </style>
+    <script src="js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/site.css">
-    <style type="text/tailwindcss">
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
 </head>
-<body class="bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
+<body class="jo-manto-skin page-visagismo bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
 
-    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center max-w-7xl mx-auto left-1/2 transform -translate-x-1/2"></nav>
+    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center"></nav>
 
-    <header id="hero" class="hero hero--light hero--standard relative w-full flex items-end justify-center pb-24 md:pb-32 overflow-hidden">
+    <header id="hero" class="hero hero--balanced hero--standard relative w-full flex items-center md:items-end justify-center pb-16 md:pb-32 overflow-hidden">
         <div class="absolute inset-0 w-full h-full z-0">
             <img id="img-hero" src="images/f28e8093-af12-47b3-be8f-046078ea4e0d.jpg" alt="Visagismo Jo Manto — identidade e confiança" class="hero-image w-full h-full object-cover object-center opacity-90">
         </div>
         <div class="hero-scrim-top absolute inset-0 z-[1] pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/20 to-transparent z-[1]"></div>
+        <div class="hero-scrim-bottom absolute inset-0 z-[1] pointer-events-none"></div>
         <div class="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center reveal active">
-            <span class="hero-kicker text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 font-medium">Visagismo &middot; Jo Manto</span>
+            <span class="hero-kicker uppercase mb-6 font-medium">Visagismo &middot; Jo Manto</span>
             <h1 class="hero-title font-serif text-5xl md:text-7xl leading-[1.1] mb-6">
                 A Leveza da Sua<br/>
                 <span class="italic font-light">Nova Identidade</span>
@@ -54,36 +48,36 @@
             </p>
             <div class="hero-actions flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="#processo" class="hero-btn-primary">Entender o Processo</a>
-                <a href="#investimento" class="hero-btn-secondary">Ver Investimento</a>
+                <a href="#investimento" class="hero-btn-secondary hero-btn-secondary--dim">Ver Investimento</a>
             </div>
         </div>
     </header>
 
-    <section class="trust-bar py-10 px-6 bg-linen reveal" aria-label="Números Jo Manto">
+    <section class="trust-bar trust-bar--platinum py-10 px-6 reveal" aria-label="Números Jo Manto">
         <div id="trust-bar" class="max-w-5xl mx-auto"></div>
     </section>
 
-    <section class="py-24 px-6 bg-linen" id="processo">
+    <section class="py-24 px-6 bg-canvas" id="processo">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-16">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">O Processo</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">O Processo</span>
                 <h2 class="font-serif text-3xl md:text-5xl text-espresso mb-6">Como Funciona o Visagismo</h2>
                 <p class="font-light text-espresso/60 text-sm md:text-base max-w-xl mx-auto">Três etapas para construir um visual que seja 100% seu — sem modismos, sem pressa.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] bg-mist z-0"></div>
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] process-connector z-0"></div>
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">1</div>
+                    <div class="process-step-badge w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">1</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Consultoria de Imagem</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs">Conversa profunda sobre sua rotina, estilo de vida e o que deseja transmitir. Sem julgamentos, só escuta.</p>
                 </div>
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">2</div>
+                    <div class="process-step-badge w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">2</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Desenho Visagístico</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs">Análise da estrutura facial, proporções e textura do fio para definir o corte ideal para você.</p>
                 </div>
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">3</div>
+                    <div class="process-step-badge w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">3</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Execução & Texturização</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs">Corte estruturado com acabamento personalizado. Movimento, caimento e identidade no espelho.</p>
                 </div>
@@ -91,33 +85,33 @@
         </div>
     </section>
 
-    <section class="py-16 px-6 bg-canvas border-y border-mist">
+    <section class="py-16 px-6 section-strip--pure border-y border-mist">
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-10 md:gap-16 items-center reveal">
             <div>
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Antes da Tesoura</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Antes da Tesoura</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso leading-tight">Você não precisa chegar decidida.</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="border border-mist bg-linen p-5">
-                    <p class="text-[10px] uppercase tracking-widest text-champagne mb-3">01</p>
+                <div class="editorial-card editorial-card--elevated border border-mist p-5">
+                    <p class="type-kicker type-kicker--amber mb-3 step-index-amber">01</p>
                     <p class="text-xs font-light text-espresso/75 leading-relaxed">Entendemos o que você quer sentir quando se olha no espelho.</p>
                 </div>
-                <div class="border border-mist bg-linen p-5">
-                    <p class="text-[10px] uppercase tracking-widest text-champagne mb-3">02</p>
+                <div class="editorial-card editorial-card--elevated border border-mist p-5">
+                    <p class="type-kicker type-kicker--amber mb-3 step-index-amber">02</p>
                     <p class="text-xs font-light text-espresso/75 leading-relaxed">Traduzimos isso para proporção, textura, caimento e manutenção.</p>
                 </div>
-                <div class="border border-mist bg-linen p-5">
-                    <p class="text-[10px] uppercase tracking-widest text-champagne mb-3">03</p>
+                <div class="editorial-card editorial-card--elevated border border-mist p-5">
+                    <p class="type-kicker type-kicker--amber mb-3 step-index-amber">03</p>
                     <p class="text-xs font-light text-espresso/75 leading-relaxed">Só então o corte acontece, com uma decisão construída junto.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-6 bg-canvas" id="portfolio">
+    <section class="py-32 px-6 bg-linen" id="portfolio">
         <div class="max-w-6xl mx-auto reveal">
             <div class="text-center mb-16">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Portfólio Visual</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Portfólio Visual</span>
                 <h2 class="font-serif text-3xl md:text-5xl text-espresso mb-6">Estudos de Identidade</h2>
                 <p class="font-light text-espresso/60 text-sm max-w-md mx-auto">O caimento perfeito, a textura saudável e a adequação visual ao seu rosto.</p>
             </div>
@@ -125,22 +119,22 @@
                 <article class="editorial-card group overflow-hidden">
                     <button type="button" class="portfolio-trigger block w-full text-left" data-portfolio-trigger data-portfolio-index="0" aria-label="Ampliar imagem do portfólio">
                         <div class="aspect-[4/5] overflow-hidden">
-                            <img data-portfolio-index="0" src="images/CURTO.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt="Corte curto texturizado com movimento natural — visagismo Jo Manto Chapecó">
+                            <img data-portfolio-index="0" src="images/curto.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt="Corte curto texturizado com movimento natural — visagismo Jo Manto Chapecó">
                         </div>
                     </button>
                     <div class="p-5">
-                        <span data-portfolio-label class="text-[10px] uppercase tracking-widest text-clay font-medium">Textura & Movimento</span>
+                        <span data-portfolio-label class="type-kicker type-kicker--clay type-kicker--inline">Textura & Movimento</span>
                         <p class="text-xs text-taupe font-light leading-relaxed mt-3">Corte pensado para revelar presença, leveza e estrutura sem perder naturalidade.</p>
                     </div>
                 </article>
                 <article class="editorial-card group overflow-hidden">
                     <button type="button" class="portfolio-trigger block w-full text-left" data-portfolio-trigger data-portfolio-index="1" aria-label="Ampliar imagem do portfólio">
                         <div class="aspect-[4/5] overflow-hidden">
-                            <img data-portfolio-index="1" src="images/CORTE CURTO2.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt="Bob estruturado com franja — corte visagístico Jo Manto">
+                            <img data-portfolio-index="1" src="images/corte-curto-2.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt="Bob estruturado com franja — corte visagístico Jo Manto">
                         </div>
                     </button>
                     <div class="p-5">
-                        <span data-portfolio-label class="text-[10px] uppercase tracking-widest text-clay font-medium">Arquitetura Fina</span>
+                        <span data-portfolio-label class="type-kicker type-kicker--clay type-kicker--inline">Arquitetura Fina</span>
                         <p class="text-xs text-taupe font-light leading-relaxed mt-3">Linhas mais limpas para sustentar imagem sofisticada com manutenção possível.</p>
                     </div>
                 </article>
@@ -151,7 +145,7 @@
                         </div>
                     </button>
                     <div class="p-5">
-                        <span data-portfolio-label class="text-[10px] uppercase tracking-widest text-clay font-medium">Integridade do Fio</span>
+                        <span data-portfolio-label class="type-kicker type-kicker--clay type-kicker--inline">Integridade do Fio</span>
                         <p class="text-xs text-taupe font-light leading-relaxed mt-3">Movimento e brilho preservados para um resultado bonito no toque e no caimento.</p>
                     </div>
                 </article>
@@ -162,73 +156,80 @@
                         </div>
                     </button>
                     <div class="p-5">
-                        <span data-portfolio-label class="text-[10px] uppercase tracking-widest text-clay font-medium">Adequação Facial</span>
+                        <span data-portfolio-label class="type-kicker type-kicker--clay type-kicker--inline">Adequação Facial</span>
                         <p class="text-xs text-taupe font-light leading-relaxed mt-3">Camadas e franja desenhadas para equilibrar rosto, textura e personalidade.</p>
                     </div>
                 </article>
             </div>
-            <p class="text-center text-[10px] uppercase tracking-widest text-taupe mt-8">Toque em uma imagem para ampliar</p>
+            <p class="text-center type-kicker type-kicker--taupe mt-8">Toque em uma imagem para ampliar</p>
         </div>
     </section>
 
-    <section class="py-32 px-6 bg-linen overflow-hidden">
-        <div class="max-w-6xl mx-auto reveal">
+    <section class="ink-band" aria-label="Assinatura Jo Manto">
+        <div class="max-w-4xl mx-auto text-center px-6 reveal">
+            <p class="ink-band__quote">"A tesoura só entra depois da conversa."</p>
+            <p class="ink-band__attrib">Jo Manto · Visagismo</p>
+        </div>
+    </section>
+
+    <section class="py-32 bg-linen testimonials-section">
+        <div class="max-w-6xl mx-auto px-6 reveal">
             <div class="text-center mb-16">
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-4">O Que Elas Sentem</h2>
                 <p class="text-sm font-light text-taupe uppercase tracking-widest">Depoimentos de Visagismo</p>
             </div>
-            <div class="testimonials-rail" data-testimonials-rail>
-                <div class="testimonials-track flex gap-6 overflow-x-auto hide-scrollbar pb-10 snap-x snap-mandatory">
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-canvas border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+        </div>
+        <div class="testimonials-rail testimonials-rail--bleed" data-testimonials-rail>
+            <div class="testimonials-track hide-scrollbar">
+                <div class="testimonials-card">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Medo de mudar</span>
                             <span class="proof-chip">Corte curto</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"Pela primeira vez na vida saí do salão sem vontade de prender o cabelo. A Jo conseguiu captar uma força no corte que eu nem sabia que existia."</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Marina T.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: mais presença no rosto</p>
+                        <p class="testimonial-card__quote">"Pela primeira vez na vida saí do salão sem vontade de prender o cabelo. A Jo conseguiu captar uma força no corte que eu nem sabia que existia."</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Marina T.</p>
+                            <p class="testimonial-result">Resultado percebido: mais presença no rosto</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-canvas border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+                <div class="testimonials-card">
+                    <div class="testimonial-card testimonial-card--featured">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Nova fase</span>
                             <span class="proof-chip">Visagismo</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"Ela te escuta de verdade. Mudei a estrutura do corte e ganhei uma confiança que não tinha antes. O visagismo fez toda a diferença."</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Sofia M.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: segurança na manutenção</p>
+                        <p class="testimonial-card__quote">"Ela te escuta de verdade. Mudei a estrutura do corte e ganhei uma confiança que não tinha antes. O visagismo fez toda a diferença."</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Sofia M.</p>
+                            <p class="testimonial-result">Resultado percebido: segurança na manutenção</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-canvas border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+                <div class="testimonials-card">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Manutenção</span>
                             <span class="proof-chip">Corte</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"Saí sabendo como cuidar do corte em casa. Pela primeira vez entendi por que meu cabelo caía de um jeito e como manter o movimento entre as visitas."</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Ana L.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: clareza na rotina</p>
+                        <p class="testimonial-card__quote">"Saí sabendo como cuidar do corte em casa. Pela primeira vez entendi por que meu cabelo caía de um jeito e como manter o movimento entre as visitas."</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Ana L.</p>
+                            <p class="testimonial-result">Resultado percebido: clareza na rotina</p>
                         </div>
                     </div>
                 </div>
-                </div>
-                <p class="testimonials-scroll-hint" aria-hidden="true">Arraste para ler <span aria-hidden="true">→</span></p>
-                <div class="testimonials-dots" aria-label="Navegação dos depoimentos"></div>
             </div>
+            <p class="testimonials-scroll-hint" aria-hidden="true">Arraste para ler <span aria-hidden="true">→</span></p>
+            <div class="testimonials-dots" aria-label="Navegação dos depoimentos"></div>
         </div>
     </section>
 
     <section class="py-24 px-6 bg-canvas" id="investimento">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-14">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Investimento</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Investimento</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Cortes & Visagismo</h2>
                 <p class="text-sm font-light text-espresso/65 leading-relaxed max-w-xl mx-auto">
                     O valor não está apenas no corte. Está na decisão assistida, no desenho e na segurança de sair com uma imagem possível de sustentar.
@@ -252,9 +253,9 @@
                     </div>
                     <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--secondary">Consultar A Descoberta</a>
                 </div>
-                <div class="editorial-card pricing-tier p-8 bg-linen" data-investment-page="visagismo" data-investment-tier="signature">
+                <div class="editorial-card pricing-tier p-8" data-investment-page="visagismo" data-investment-tier="signature">
                     <div class="pricing-tier-body">
-                        <span data-investment-badge class="pricing-tier-badge hidden">Mais indicado</span>
+                        <span data-investment-badge class="pricing-tier-badge hidden">Mais escolhido</span>
                         <div class="flex items-start justify-between gap-4 mb-6">
                             <div>
                                 <h4 class="font-serif text-2xl text-espresso">A Assinatura</h4>
@@ -320,6 +321,10 @@
 
     <script src="js/site-config.js"></script>
     <script src="js/shared.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', () => initPage('visagismo'));</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initPage('visagismo');
+        });
+    </script>
 </body>
 </html>

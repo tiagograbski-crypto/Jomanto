@@ -63,14 +63,28 @@ const SITE_CONFIG = {
         hero: {
             hub: 'images/capa.jpg',
             visagismo: 'images/f28e8093-af12-47b3-be8f-046078ea4e0d.jpg',
-            terapias: 'images/BANNER CABELO PRETO.jpg'
+            terapias: 'images/capa-banner-10.jpg'
         },
-        empowerment: 'images/CURTO.jpg',
+        empowerment: 'images/capa-banner-11.jpg',
         filosofia: 'images/capa.jpg',
-        jo: 'images/58bbf966-c5b2-4079-bd2f-fc04d91ed96d.jpg',
+        jo: 'images/jo-manto-portrait.jpg',
+        terapiasStudio: [
+            {
+                src: 'images/banner-ozonio.jpg',
+                alt: 'Terapia capilar com vaporização GL PRO no estúdio Jo Manto — Chapecó',
+                caption: 'Infusão de ativos com vaporização controlada',
+                kicker: 'Protocolo presencial'
+            },
+            {
+                src: 'images/terapia-lavagem.jpg',
+                alt: 'Ritual de lavagem e leitura capilar no estúdio Jo Manto',
+                caption: 'Lavagem técnica e escuta antes da prescrição',
+                kicker: 'Diagnóstico no lavatório'
+            }
+        ],
         portfolio: [
-            'images/CURTO.jpg',
-            'images/CORTE CURTO2.jpg',
+            'images/curto.jpg',
+            'images/corte-curto-2.jpg',
             'images/f28e8093-af12-47b3-be8f-046078ea4e0d.jpg',
             'images/a63e4aaf-7efd-49c5-a6a3-be290ab76956.jpg'
         ]
@@ -119,7 +133,7 @@ const SITE_CONFIG = {
             file: 'terapias.html',
             title: 'Terapias Capilares | Jo Manto — Chapecó',
             description: 'Terapias capilares com protocolos GL PRO em Chapecó, SC. Mapeamento digital, leitura do fio e reposição personalizada com Jo Manto.',
-            image: 'images/BANNER%20CABELO%20PRETO.jpg'
+            image: 'images/capa-banner-10.jpg'
         }
     },
     editorial: [
@@ -149,6 +163,42 @@ const SITE_CONFIG = {
 
 const GL_PRO = {
     tagline: 'Para cada dano, uma resposta molecular exata.',
+    banner: {
+        src: 'images/banner-todos-tier.jpg',
+        alt: 'Biblioteca molecular GL PRO — prateleira com 29 ativos de reconstrução capilar no estúdio Jo Manto'
+    },
+    activesCount: 29,
+    actives: [
+        'AZ PROTEIN WQ',
+        'AMINO Z50',
+        'AZ OIL ARGAN',
+        'AZ BUTTER CUPUAÇU',
+        'AMINO CRM',
+        'AZ OIL OJON',
+        'AMINO Z200',
+        'ROSA MOSQUETA',
+        'AZ PROTEIN S',
+        'AZ PROTEIN QRT',
+        'EXTRACT JABORANDI',
+        'D-PANTENOL QUATERNIZADO',
+        'AZ PROTEIN 8K',
+        'AZ OIL MARULA',
+        'BUTTER KARITÉ',
+        'AZ OIL TUTANO',
+        'AMINOÁCIDOS DE ALTA PERFORMANCE',
+        'EXTRACT ALV BABOSA',
+        'AZ OIL SEMENTE DE UVA',
+        'AZ OIL MACADÂMIA',
+        'EXTRACT MLG MEL',
+        'AZ OIL ALGODÃO',
+        'EXTRACT HTL HORTELÃ',
+        'EXTRACT ALC ALECRIM',
+        'VITAMINA A OLEOSA',
+        'SENSOIL PLUS',
+        'SILSOFT AX',
+        'ÓLEO DE MONOI',
+        'GARDEN ACTIVE'
+    ],
     categories: [
         {
             name: 'Proteínas & Aminoácidos',
@@ -197,7 +247,7 @@ function renderTrustBar(containerId) {
         ${SITE_CONFIG.trustStats.map((stat) => `
             <div class="trust-stat text-center px-4 py-2">
                 <span class="trust-stat-value font-serif text-3xl md:text-4xl text-espresso block mb-1">${stat.value}</span>
-                <span class="trust-stat-label text-[10px] uppercase tracking-[0.2em] text-taupe font-medium">${stat.label}</span>
+                <span class="trust-stat-label type-kicker type-kicker--secondary">${stat.label}</span>
             </div>
         `).join('')}`;
 }
@@ -216,10 +266,10 @@ function renderGlProSection() {
     container.innerHTML = GL_PRO.categories.map((category) => `
         <div class="bg-canvas border border-mist p-6 md:p-8 rounded-sm">
             <h3 class="font-medium tracking-wide mb-2 text-sm uppercase text-espresso">${category.name}</h3>
-            <p class="text-xs text-taupe font-light leading-relaxed mb-6">${category.description}</p>
+            <p class="text-xs text-secondary font-normal leading-relaxed mb-6">${category.description}</p>
             <div class="flex flex-wrap gap-2">
                 ${category.products.map((product) => `
-                    <span class="text-[10px] uppercase tracking-wider px-3 py-1.5 bg-linen border border-mist text-espresso/80">${product}</span>
+                    <span class="gl-pro-chip">${product}</span>
                 `).join('')}
             </div>
         </div>
@@ -228,7 +278,9 @@ function renderGlProSection() {
     const marquee = document.getElementById('gl-pro-marquee');
     if (!marquee) return;
 
-    const allProducts = GL_PRO.categories.flatMap((category) => category.products);
+    const allProducts = GL_PRO.actives?.length
+        ? GL_PRO.actives
+        : GL_PRO.categories.flatMap((category) => category.products);
     const items = [...allProducts, ...allProducts].map((product) => `
         <span class="mx-8 text-sm md:text-base uppercase tracking-[0.25em] text-taupe whitespace-nowrap">${product}</span>
         <span class="text-champagne/60">·</span>
@@ -238,6 +290,41 @@ function renderGlProSection() {
 
     const taglineEl = document.getElementById('gl-pro-tagline');
     if (taglineEl) taglineEl.textContent = GL_PRO.tagline;
+
+    const bannerImg = document.getElementById('gl-pro-banner');
+    if (bannerImg && GL_PRO.banner?.src) {
+        bannerImg.src = GL_PRO.banner.src;
+        if (GL_PRO.banner.alt) bannerImg.alt = GL_PRO.banner.alt;
+    }
+
+    const countEl = document.getElementById('gl-pro-actives-count');
+    if (countEl && GL_PRO.activesCount) {
+        countEl.textContent = String(GL_PRO.activesCount);
+    }
+}
+
+function renderTerapiasStudioGallery(containerId = 'terapias-studio-gallery') {
+    const container = document.getElementById(containerId);
+    const items = SITE_CONFIG.images.terapiasStudio;
+    if (!container || !items?.length) return;
+
+    container.innerHTML = items.map((item) => `
+        <figure class="studio-gallery__item">
+            <div class="studio-gallery__frame">
+                <img
+                    src="${item.src}"
+                    alt="${item.alt}"
+                    loading="lazy"
+                    decoding="async"
+                    class="studio-gallery__img"
+                >
+            </div>
+            <figcaption class="studio-gallery__caption">
+                <span class="studio-gallery__kicker">${item.kicker}</span>
+                <span class="studio-gallery__label">${item.caption}</span>
+            </figcaption>
+        </figure>
+    `).join('');
 }
 
 function applyPortfolioImages() {
@@ -270,10 +357,10 @@ function renderEditorialTeasers(containerId) {
 
     container.innerHTML = SITE_CONFIG.editorial.map((article) => `
         <a href="${article.href}" class="editorial-card editorial-teaser group block p-6 md:p-8 h-full">
-            <span class="text-[10px] uppercase tracking-[0.28em] text-clay mb-4 block">${article.kicker}</span>
+            <span class="type-kicker type-kicker--clay mb-4">${article.kicker}</span>
             <h3 class="font-serif text-xl md:text-2xl text-espresso leading-snug mb-4 group-hover:text-clay transition-colors">${article.title}</h3>
-            <p class="text-xs font-light text-taupe leading-relaxed mb-6">${article.excerpt}</p>
-            <span class="text-[10px] uppercase tracking-widest text-espresso group-hover:tracking-[0.35em] transition-all">Ler guia →</span>
+            <p class="text-xs font-normal text-secondary leading-relaxed mb-6">${article.excerpt}</p>
+            <span class="type-link group-hover:tracking-[0.35em]">Ler guia →</span>
         </a>
     `).join('');
 }

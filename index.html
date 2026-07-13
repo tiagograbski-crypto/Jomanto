@@ -18,20 +18,18 @@
     <meta name="twitter:title" content="Jo Manto | Visagismo e Terapias Capilares — Chapecó">
     <meta name="twitter:description" content="Jo Manto — Arquitetura capilar personalizada em Chapecó, SC. Visagismo para sua nova identidade ou terapias com protocolos GL PRO.">
     <meta name="twitter:image" content="https://jomanto.com.br/images/capa.jpg">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @import "css/tailwind-theme.css";
-    </style>
+    <script src="js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/site.css">
 </head>
-<body class="bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
+<body class="jo-manto-skin bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
 
-    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center max-w-7xl mx-auto left-1/2 transform -translate-x-1/2"></nav>
+    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center"></nav>
 
     <header id="hero" class="hero hero--light hero--standard relative w-full flex items-end justify-center pb-24 md:pb-32 overflow-hidden">
         <div class="absolute inset-0 w-full h-full z-0">
@@ -40,7 +38,7 @@
         <div class="hero-scrim-top absolute inset-0 z-[1] pointer-events-none"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/25 to-transparent z-[1]"></div>
         <div class="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center reveal active">
-            <span class="hero-kicker text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 font-medium">Jo Manto &middot; Chapecó, SC</span>
+            <span class="hero-kicker type-kicker mb-6">Jo Manto &middot; Chapecó, SC</span>
             <h1 class="hero-title font-serif text-5xl md:text-7xl leading-[1.1] mb-6">
                 Arquitetura Capilar<br/>
                 <span class="italic font-light">100% Sua</span>
@@ -63,14 +61,14 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center reveal">
             <div class="relative order-2 md:order-1">
                 <div class="aspect-[4/5] overflow-hidden rounded-sm border border-mist">
-                    <img id="img-empowerment" src="images/CURTO.jpg" loading="lazy" decoding="async" alt="Mulher confiante após visagismo Jo Manto" class="w-full h-full object-cover object-center">
+                    <img id="img-empowerment" src="images/curto.jpg" loading="lazy" decoding="async" alt="Mulher confiante após visagismo Jo Manto" class="w-full h-full object-cover object-center">
                 </div>
-                <div class="empowerment-quote absolute -bottom-4 left-4 md:-left-8 px-4 py-3 md:px-5 md:py-4 max-w-[14rem] sm:max-w-none">
+                <div class="empowerment-quote px-4 py-3 md:px-5 md:py-4">
                     <p class="font-serif italic text-sm md:text-lg text-espresso leading-snug">"Força que começa no espelho."</p>
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-6 block">Empoderamento Real</span>
+                <span class="type-kicker type-kicker--champagne mb-6 block">Empoderamento Real</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-6 leading-tight">Mais do que um corte.<br/>Uma presença.</h2>
                 <p class="font-light text-espresso/75 text-sm md:text-base leading-relaxed mb-6">
                     Em mais de 16 anos, vi milhares de mulheres da região redescobrirem uma versão de si mesmas que já existia — só precisava da estrutura certa para aparecer.
@@ -86,7 +84,7 @@
         <div class="max-w-6xl mx-auto reveal">
             <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-start">
                 <div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-clay mb-5 block">Experiência Boutique</span>
+                    <span class="type-kicker type-kicker--clay mb-5 block">Experiência Boutique</span>
                     <h2 class="font-serif text-3xl md:text-5xl text-espresso leading-tight mb-6">O atendimento não começa no cabelo. Começa na leitura.</h2>
                     <p class="text-sm md:text-base font-light text-espresso/70 leading-relaxed">
                         A proposta Jo Manto é desacelerar a decisão. Antes de cortar, tratar ou indicar um protocolo, existe uma leitura de imagem, rotina e saúde do fio.
@@ -94,17 +92,17 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-4">Escuta</p>
+                        <p class="type-kicker type-kicker--clay mb-4">Escuta</p>
                         <h3 class="font-serif text-xl text-espresso mb-3">Contexto antes da técnica.</h3>
                         <p class="text-xs font-light text-taupe leading-relaxed">Entender fase, rotina, manutenção possível e o que a cliente quer comunicar.</p>
                     </div>
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-4">Diagnóstico</p>
+                        <p class="type-kicker type-kicker--clay mb-4">Diagnóstico</p>
                         <h3 class="font-serif text-xl text-espresso mb-3">Decisão sem achismo.</h3>
                         <p class="text-xs font-light text-taupe leading-relaxed">Análise de rosto, textura, dano, densidade e resposta real do fio.</p>
                     </div>
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-4">Execução</p>
+                        <p class="type-kicker type-kicker--clay mb-4">Execução</p>
                         <h3 class="font-serif text-xl text-espresso mb-3">Resultado com intenção.</h3>
                         <p class="text-xs font-light text-taupe leading-relaxed">Corte ou terapia desenhados para o que fica bonito e sustentável depois do salão.</p>
                     </div>
@@ -116,7 +114,7 @@
     <section class="py-24 px-6 bg-canvas" id="caminhos">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-16">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Escolha Seu Caminho</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Escolha Seu Caminho</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">O que você busca hoje?</h2>
                 <p class="text-sm md:text-base font-light text-espresso/65 leading-relaxed max-w-2xl mx-auto">
                     Se o seu desejo é imagem, começamos pelo visagismo. Se a dor está no toque, brilho ou resistência do fio, começamos pela terapia.
@@ -124,24 +122,24 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <a href="visagismo.html" class="group relative overflow-hidden rounded-sm border border-mist bg-linen p-10 md:p-12 hover:shadow-[0_8px_30px_rgb(61,56,53,0.06)] transition-all duration-500 hover:-translate-y-1">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-6 block">Visagismo</span>
+                    <span class="type-kicker type-kicker--champagne mb-6 block">Visagismo</span>
                     <h3 class="font-serif text-2xl md:text-3xl text-espresso mb-4 leading-tight">Nova Identidade Visual</h3>
                     <p class="text-sm font-light text-espresso/70 leading-relaxed mb-8">Consultoria de imagem, desenho visagístico e corte estruturado. Descubra a estrutura ideal para o seu rosto.</p>
                     <div class="space-y-3 mb-8 text-xs font-light text-taupe leading-relaxed">
                         <p><strong class="font-medium text-espresso">Indicado para:</strong> vontade de mudar, medo de errar no corte, busca por leveza ou presença.</p>
                         <p><strong class="font-medium text-espresso">Você sai com:</strong> um corte possível para seu rosto, sua textura e sua rotina.</p>
                     </div>
-                    <span class="text-[10px] uppercase tracking-widest font-medium text-espresso group-hover:tracking-[0.35em] transition-all">Explorar Visagismo →</span>
+                    <span class="type-link group-hover:tracking-[0.35em]">Explorar Visagismo →</span>
                 </a>
                 <a href="terapias.html" class="group relative overflow-hidden rounded-sm border border-champagne/50 bg-blush p-10 md:p-12 hover:shadow-[0_8px_30px_rgb(61,56,53,0.06)] transition-all duration-500 hover:-translate-y-1">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-6 block">Terapias Capilares</span>
+                    <span class="type-kicker type-kicker--champagne mb-6 block">Terapias Capilares</span>
                     <h3 class="font-serif text-2xl md:text-3xl text-espresso mb-4 leading-tight">Saúde Molecular do Fio</h3>
                     <p class="text-sm font-light text-espresso/70 leading-relaxed mb-8">Mapeamento digital, scoring de integridade e protocolos GL PRO. Reposição exata para cada tipo de dano.</p>
                     <div class="space-y-3 mb-8 text-xs font-light text-taupe leading-relaxed">
                         <p><strong class="font-medium text-espresso">Indicado para:</strong> quebra, porosidade, frizz, opacidade, dano químico ou perda de massa.</p>
                         <p><strong class="font-medium text-espresso">Você sai com:</strong> uma leitura clara do fio e um protocolo sem cronograma genérico.</p>
                     </div>
-                    <span class="text-[10px] uppercase tracking-widest font-medium text-espresso group-hover:tracking-[0.35em] transition-all">Explorar Terapias →</span>
+                    <span class="type-link group-hover:tracking-[0.35em]">Explorar Terapias →</span>
                 </a>
             </div>
             <div class="mt-10 text-center border border-mist bg-canvas px-6 py-5">
@@ -156,7 +154,7 @@
         <div class="max-w-6xl mx-auto reveal">
             <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
                 <div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-6 block">Diagnóstico de Rota</span>
+                    <span class="type-kicker type-kicker--champagne mb-6 block">Diagnóstico de Rota</span>
                     <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-6">
                         Qual conversa sua imagem está pedindo agora?
                     </h2>
@@ -174,26 +172,26 @@
                         </button>
                     </div>
                     <div id="funnel-panel" class="min-h-[18rem]" role="tabpanel" aria-labelledby="funnel-tab-visagismo" tabindex="0">
-                        <p id="funnel-kicker" class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-5">Rota Visagismo</p>
+                        <p id="funnel-kicker" class="type-kicker type-kicker--champagne mb-5">Rota Visagismo</p>
                         <h3 id="funnel-title" class="font-serif text-3xl md:text-4xl leading-tight mb-5">Quando você quer mudar, mas não quer errar no espelho.</h3>
                         <p id="funnel-copy" class="text-sm font-light text-canvas/75 leading-relaxed mb-7">
                             Para quem está em uma nova fase, cansada de repetir o mesmo corte ou insegura sobre o que combina com o rosto e a rotina.
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
                             <div class="border border-canvas/15 p-4">
-                                <p class="text-[10px] uppercase tracking-widest text-champagne mb-2">Medo oculto</p>
+                                <p class="type-kicker type-kicker--champagne mb-2">Medo oculto</p>
                                 <p id="funnel-fear" class="text-xs text-canvas/70 leading-relaxed">Cortar e sentir que perdeu a sua cara.</p>
                             </div>
                             <div class="border border-canvas/15 p-4">
-                                <p class="text-[10px] uppercase tracking-widest text-champagne mb-2">Prova buscada</p>
+                                <p class="type-kicker type-kicker--champagne mb-2">Prova buscada</p>
                                 <p id="funnel-proof" class="text-xs text-canvas/70 leading-relaxed">Ver a proposta antes da tesoura entrar em cena.</p>
                             </div>
                             <div class="border border-canvas/15 p-4">
-                                <p class="text-[10px] uppercase tracking-widest text-champagne mb-2">Próximo passo</p>
+                                <p class="type-kicker type-kicker--champagne mb-2">Próximo passo</p>
                                 <p id="funnel-next" class="text-xs text-canvas/70 leading-relaxed">Uma conversa de imagem e um corte pensado para você.</p>
                             </div>
                         </div>
-                        <a id="funnel-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-4 bg-canvas text-espresso rounded-full text-[10px] uppercase tracking-widest font-medium hover:bg-champagne transition-colors">
+                        <a id="funnel-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="funnel-cta">
                             Conversar Sobre Esta Rota
                         </a>
                     </div>
@@ -208,7 +206,7 @@
             <div class="absolute inset-0 bg-espresso/35"></div>
         </div>
         <div class="relative z-10 max-w-3xl mx-auto text-center text-canvas reveal">
-            <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-8 block">A Assinatura Jo Manto</span>
+            <span class="type-kicker type-kicker--champagne mb-8 block">A Assinatura Jo Manto</span>
             <h2 class="font-serif text-3xl md:text-5xl mb-10 leading-tight">Sem Regras Engessadas.<br/>Apenas Essência.</h2>
             <div class="w-16 h-[1px] bg-champagne/50 mx-auto mb-10"></div>
             <p class="font-light text-canvas/90 leading-relaxed text-base md:text-xl max-w-2xl mx-auto">
@@ -221,24 +219,24 @@
         <div class="max-w-6xl mx-auto reveal">
             <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 items-start">
                 <div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-5 block">Critérios de Confiança</span>
+                    <span class="type-kicker type-kicker--taupe mb-5 block">Critérios de Confiança</span>
                     <h2 class="font-serif text-3xl md:text-4xl text-espresso leading-tight">O luxo aqui é silencioso: tempo, privacidade e precisão.</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-3">Atendimento 1:1</p>
+                        <p class="type-kicker type-kicker--clay mb-3">Atendimento 1:1</p>
                         <p class="text-xs font-light text-taupe leading-relaxed">A conversa não é apressada. O diagnóstico vem antes da execução.</p>
                     </div>
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-3">Sem protocolo genérico</p>
+                        <p class="type-kicker type-kicker--clay mb-3">Sem protocolo genérico</p>
                         <p class="text-xs font-light text-taupe leading-relaxed">Imagem e terapia são definidos pela sua rotina, rosto, fio e momento.</p>
                     </div>
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-3">Privacidade</p>
+                        <p class="type-kicker type-kicker--clay mb-3">Privacidade</p>
                         <p class="text-xs font-light text-taupe leading-relaxed">Atendimento reservado, comunicação direta e política LGPD disponível.</p>
                     </div>
                     <div class="editorial-card p-6">
-                        <p class="text-[10px] uppercase tracking-widest text-clay mb-3">Chapecó e região</p>
+                        <p class="type-kicker type-kicker--clay mb-3">Chapecó e região</p>
                         <p class="text-xs font-light text-taupe leading-relaxed">Autoridade local construída com recorrência, indicação e resultado percebido.</p>
                     </div>
                 </div>
@@ -249,7 +247,7 @@
     <section class="py-20 md:py-24 px-6 bg-linen border-y border-mist" id="editorial">
         <div class="max-w-6xl mx-auto reveal">
             <div class="text-center mb-12 md:mb-14">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Guias Capilares</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Guias Capilares</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Leitura antes do tratamento</h2>
                 <p class="text-sm font-light text-espresso/65 leading-relaxed max-w-2xl mx-auto">
                     Conteúdo editorial para entender sintomas, rotina e triagem — sem promessa genérica e sem receita pronta.
@@ -270,7 +268,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 reveal">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-6 block">A Especialista</span>
+                <span class="type-kicker type-kicker--taupe mb-6 block">A Especialista</span>
                 <h2 class="font-serif text-4xl md:text-5xl mb-8 text-espresso leading-tight">Quem é a Jo?</h2>
                 <div class="space-y-5 font-light text-espresso/80 text-sm md:text-base leading-relaxed">
                     <p>O meu verdadeiro trabalho começa muito antes de tocar nos seus fios: começa na nossa conversa.</p>

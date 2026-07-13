@@ -93,24 +93,7 @@ body.jo-manto-skin #footer-controls.funnel-footer {
     z-index: 10;
 }
 
-/* ── Embed: full-bleed no iframe ── */
-body.jo-manto-skin.is-embed {
-    height: 100%;
-    min-height: 100%;
-    overflow: hidden;
-}
-
-body.jo-manto-skin.is-embed #view-funnel.funnel-shell {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    max-height: 100%;
-    min-height: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-}
+/* ── Embed: full-bleed no iframe (geometria em wizard-layout.css) ── */
 
 /* ── Responsivo ── */
 @media (min-width: 768px) {

@@ -1,0 +1,137 @@
+/**
+ * Jo Manto · Typography utilities (site + mapeamento)
+ */
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+@media (prefers-contrast: more) {
+    :root {
+        --jm-text-secondary: #4F4A44;
+        --jm-text-muted: #4F4A44;
+        --jm-taupe: #4F4A44;
+        --jm-text-subtle: #4F4A44;
+        --jm-champagne: #7A6E5C;
+        --jm-weight-body: 500;
+        --jm-border: #B8B0A4;
+        --jm-platinum-deep: #A39A8E;
+    }
+}
+
+.type-display {
+    font-family: var(--jm-font-serif, 'Playfair Display', Georgia, serif);
+    font-weight: var(--jm-weight-display);
+    color: var(--jm-espresso);
+    line-height: var(--jm-leading-tight);
+}
+
+.type-body {
+    font-family: var(--jm-font-sans, 'Inter', system-ui, sans-serif);
+    font-size: var(--jm-type-body);
+    font-weight: var(--jm-weight-body);
+    line-height: var(--jm-leading-body);
+    color: var(--jm-espresso);
+}
+
+.type-body--secondary {
+    color: var(--jm-text-secondary);
+}
+
+.type-body--sm {
+    font-size: var(--jm-type-small);
+}
+
+.type-kicker {
+    display: block;
+    font-family: var(--jm-font-sans, 'Inter', system-ui, sans-serif);
+    font-size: var(--jm-type-kicker);
+    font-weight: 500;
+    letter-spacing: var(--jm-tracking-kicker);
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.type-kicker--inline {
+    display: inline;
+}
+
+.type-kicker--taupe,
+.type-kicker--secondary {
+    color: var(--jm-text-secondary);
+}
+
+.type-kicker--clay {
+    color: var(--jm-clay);
+}
+
+.type-kicker--champagne {
+    color: var(--jm-champagne);
+}
+
+.type-kicker--amber {
+    color: var(--jm-amber-reserve);
+    font-weight: 600;
+}
+
+.type-kicker--espresso {
+    color: var(--jm-espresso);
+}
+
+.type-kicker--wide {
+    letter-spacing: 0.16em;
+}
+
+@media (min-width: 768px) {
+    .type-kicker--wide {
+        letter-spacing: 0.22em;
+    }
+}
+
+.type-quote {
+    font-family: var(--jm-font-serif, 'Playfair Display', Georgia, serif);
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--jm-espresso);
+}
+
+.type-link {
+    display: inline-block;
+    font-size: var(--jm-type-kicker);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--jm-espresso);
+    transition: letter-spacing 0.25s ease, color 0.25s ease;
+}
+
+.type-link:hover {
+    letter-spacing: 0.22em;
+}
+
+.type-chip,
+.gl-pro-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.85rem;
+    padding: 0.45rem 0.75rem;
+    font-size: var(--jm-type-kicker);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--jm-espresso);
+    background-color: var(--jm-linen);
+    border: 1px solid var(--jm-mist);
+}
+
+.testimonial-card__attribution {
+    font-size: var(--jm-type-kicker);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--jm-espresso);
+}

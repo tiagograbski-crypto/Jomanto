@@ -13,53 +13,32 @@
     <meta property="og:title" content="Terapias Capilares | Jo Manto — Chapecó">
     <meta property="og:description" content="Terapias capilares com protocolos GL PRO em Chapecó, SC. Mapeamento digital, leitura do fio e reposição personalizada com Jo Manto.">
     <meta property="og:url" content="https://jomanto.com.br/terapias.html">
-    <meta property="og:image" content="https://jomanto.com.br/images/BANNER%20CABELO%20PRETO.jpg">
+    <meta property="og:image" content="https://jomanto.com.br/images/capa-banner-10.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Terapias Capilares | Jo Manto — Chapecó">
     <meta name="twitter:description" content="Terapias capilares com protocolos GL PRO em Chapecó, SC. Mapeamento digital, leitura do fio e reposição personalizada com Jo Manto.">
-    <meta name="twitter:image" content="https://jomanto.com.br/images/BANNER%20CABELO%20PRETO.jpg">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @import "css/tailwind-theme.css";
-    </style>
+    <meta name="twitter:image" content="https://jomanto.com.br/images/capa-banner-10.jpg">
+    <script src="js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/site.css">
-    <style type="text/tailwindcss">
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 35s linear infinite;
-        }
-        .animate-marquee:hover { animation-play-state: paused; }
-        @media (prefers-reduced-motion: reduce) {
-            .animate-marquee { animation: none !important; transform: none !important; }
-        }
-        .integrity-bar { width: 100%; height: 4px; background-color: #D8D2C8; border-radius: 2px; overflow: hidden; }
-        .integrity-fill { height: 100%; border-radius: 2px; }
-    </style>
 </head>
-<body class="bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
+<body class="jo-manto-skin page-terapias bg-canvas text-espresso font-sans antialiased selection:bg-espresso selection:text-canvas pb-28">
 
-    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center max-w-7xl mx-auto left-1/2 transform -translate-x-1/2"></nav>
+    <nav id="site-nav" class="absolute top-0 w-full z-50 py-6 px-6 flex justify-between items-center"></nav>
 
-    <header id="hero" class="hero hero--dim hero--standard relative w-full flex items-end justify-center pb-24 md:pb-32 overflow-hidden">
+    <header id="hero" class="hero hero--balanced hero--standard relative w-full flex items-end justify-center pb-24 md:pb-32 overflow-hidden">
         <div class="absolute inset-0 w-full h-full z-0">
-            <img id="img-hero" src="images/BANNER CABELO PRETO.jpg" alt="Terapias capilares Jo Manto" class="hero-image w-full h-full object-cover object-center opacity-90">
+            <img id="img-hero" src="images/capa-banner-10.jpg" alt="Terapias capilares Jo Manto — saúde e brilho do fio" class="hero-image hero-image--focus-right w-full h-full object-cover opacity-90">
         </div>
         <div class="hero-scrim-top absolute inset-0 z-[1] pointer-events-none"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/50 to-transparent z-[1]"></div>
         <div class="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center reveal active">
-            <span class="hero-kicker text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 font-medium">Terapias Capilares &middot; Jo Manto</span>
+            <span class="hero-kicker type-kicker mb-6">Terapias Capilares &middot; Jo Manto</span>
             <h1 class="hero-title font-serif text-5xl md:text-7xl leading-[1.1] mb-6">
                 Para Cada Dano,<br/>
                 <span class="italic font-light">Uma Resposta Molecular</span>
@@ -68,33 +47,33 @@
                 Para fios com quebra, porosidade, opacidade ou dano químico: diagnóstico antes do protocolo, ativo certo antes da promessa.
             </p>
             <div class="hero-actions flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a href="#mapeamento" class="hero-btn-primary hero-btn-primary--champagne">Iniciar Mapeamento</a>
+                <a href="#mapeamento" class="hero-btn-primary hero-btn-primary--amber">Iniciar Mapeamento</a>
                 <a href="#investimento" class="hero-btn-secondary hero-btn-secondary--dim">Como Funciona</a>
             </div>
         </div>
     </header>
 
-    <section class="trust-bar py-10 px-6 bg-linen reveal" aria-label="Números Jo Manto">
+    <section class="trust-bar trust-bar--platinum py-10 px-6 reveal" aria-label="Números Jo Manto">
         <div id="trust-bar" class="max-w-5xl mx-auto"></div>
     </section>
 
-    <section class="py-24 px-6 bg-blush border-t border-mist" id="processo">
+    <section class="py-24 px-6 bg-canvas border-t border-mist" id="processo">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-16">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-4 block">Engenharia de Ativos</span>
+                <span class="route-kicker">Engenharia de Ativos</span>
                 <h2 class="font-serif text-3xl md:text-5xl text-espresso mb-6">Bio Arquitetura Capilar</h2>
                 <p class="font-light text-espresso/65 text-sm md:text-base max-w-xl mx-auto">Mapeamos a necessidade exata do seu fio para formular a reposição necessária, respeitando o seu ciclo natural de lavagem.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] bg-champagne/40 z-0"></div>
-                <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">1</div>
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] process-connector z-0"></div>
+                <div class="relative z-10 flex flex-col items-center text-center process-step-primary">
+                    <div class="process-step-badge process-step-badge--active w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">1</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Mapeamento Digital</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs mb-6">Anamnese online cruzando histórico capilar, rotina de lavagem e clima da sua região.</p>
-                    <a href="#mapeamento" class="inline-flex items-center justify-center px-5 py-3 bg-espresso text-canvas rounded-full text-[10px] uppercase tracking-widest font-medium hover:bg-espresso/90 transition-colors">Iniciar Mapeamento</a>
+                    <a href="#mapeamento" class="btn-cta-amber">Iniciar Mapeamento</a>
                 </div>
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">2</div>
+                    <div class="process-step-badge w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">2</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Scoring de Integridade</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs mb-6">Dossiê capilar revelando carências exatas em água, lipídios e proteína.</p>
                     <div class="clinical-scorecard w-full max-w-[240px]" role="img" aria-label="Exemplo ilustrativo de scoring capilar: integridade 42%, com barras de água, lipídios e proteína">
@@ -127,7 +106,7 @@
                     </div>
                 </div>
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-canvas border border-mist flex items-center justify-center mb-6 text-xl font-serif text-espresso">3</div>
+                    <div class="process-step-badge w-16 h-16 rounded-full flex items-center justify-center mb-6 text-xl font-serif text-espresso">3</div>
                     <h3 class="font-medium tracking-wide mb-3 text-sm uppercase">Infusão de Ativos</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed max-w-xs">A Jo prescreve a dosagem correta de ativos GL PRO no estúdio, tratando a dor mapeada.</p>
                 </div>
@@ -135,42 +114,48 @@
         </div>
     </section>
 
-    <section class="py-16 md:py-20 px-6 bg-linen border-y border-mist scroll-mt-24 mapeamento-site-view mapeamento-chrome-intro" id="mapeamento">
+    <section class="py-16 md:py-20 px-6 mapeamento-conversion-stage border-y border-mist scroll-mt-24 mapeamento-site-view mapeamento-chrome-intro" id="mapeamento">
         <div class="max-w-3xl mx-auto reveal">
             <div class="text-center mb-8 md:mb-10 mapeamento-embed-intro">
                 <span class="conversion-kicker">Triagem gratuita · cerca de 3 minutos</span>
                 <h2 class="conversion-headline font-serif mb-4">Mapeamento Capilar Digital</h2>
                 <p class="conversion-lead">Cruze histórico químico, sintomas e clima da sua região para receber o diagnóstico orientativo do seu fio — sem compromisso.</p>
+                <ul class="mapeamento-trust-chips" aria-label="Benefícios da triagem">
+                    <li>Gratuito</li>
+                    <li>Sem cadastro</li>
+                    <li>Resultado orientativo</li>
+                </ul>
             </div>
-            <div class="mapeamento-embed-wrap">
+            <div class="mapeamento-embed-wrap mapeamento-embed-wrap--stage">
                 <iframe
                     id="mapeamento-iframe"
-                    src="mapeamento/index.html"
+                    src="mapeamento/"
                     title="Mapeamento Capilar Jo Manto"
                     class="mapeamento-site-frame"
                     loading="eager"
                 ></iframe>
             </div>
+            <p class="mapeamento-stage-note type-kicker type-kicker--secondary text-center mt-5">Depois da triagem, nossa curadoria orienta o melhor caminho presencial.</p>
         </div>
     </section>
 
-    <section class="py-16 px-6 bg-canvas border-y border-mist">
+    <section class="py-16 px-6 bg-linen border-b border-mist">
         <div class="max-w-6xl mx-auto reveal">
             <div class="text-center mb-10">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">O Que Muda na Prática</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">O Que Muda na Prática</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-4">Do sintoma ao ativo certo.</h2>
                 <p class="text-sm font-light text-espresso/65 leading-relaxed max-w-xl mx-auto">A linguagem molecular só importa quando resolve uma dor real no fio.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="border border-mist bg-linen p-6">
+                <div class="symptom-card">
                     <h3 class="text-sm uppercase tracking-wider font-medium text-espresso mb-3">Quando o fio quebra</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed">Investigamos perda de massa, elasticidade e histórico químico antes de reconstruir.</p>
                 </div>
-                <div class="border border-mist bg-linen p-6">
+                <div class="symptom-card">
                     <h3 class="text-sm uppercase tracking-wider font-medium text-espresso mb-3">Quando perde brilho</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed">Avaliamos cutícula, lipídios e porosidade para devolver toque e reflexo.</p>
                 </div>
-                <div class="border border-mist bg-linen p-6">
+                <div class="symptom-card">
                     <h3 class="text-sm uppercase tracking-wider font-medium text-espresso mb-3">Quando nada funciona</h3>
                     <p class="text-xs text-taupe font-light leading-relaxed">Saímos do cronograma genérico e montamos um protocolo conforme o diagnóstico.</p>
                 </div>
@@ -178,14 +163,56 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-linen border-t border-mist overflow-hidden" id="gl-pro">
+    <section class="py-20 md:py-24 px-6 bg-canvas border-y border-mist" id="experiencia-estudio">
         <div class="max-w-6xl mx-auto reveal">
-            <div class="text-center mb-12">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-4 block">Linha Profissional</span>
-                <h2 class="font-serif text-3xl md:text-5xl text-espresso mb-6">GL PRO</h2>
+            <div class="text-center mb-12 md:mb-14">
+                <span class="route-kicker">Experiência no Estúdio</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-4">Do mapeamento à infusão presencial</h2>
+                <p class="text-sm font-light text-espresso/65 leading-relaxed max-w-2xl mx-auto">
+                    A triagem digital prepara o caminho. No estúdio, a leitura do fio, a lavagem técnica e os protocolos GL PRO completam o cuidado.
+                </p>
+            </div>
+            <div id="terapias-studio-gallery" class="studio-gallery"></div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 gl-pro-section border-t border-mist overflow-hidden" id="gl-pro">
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="gl-pro-arsenal grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center mb-14">
+                <figure class="gl-pro-vitrine">
+                    <div class="gl-pro-vitrine__frame">
+                        <img
+                            id="gl-pro-banner"
+                            src="images/banner-todos-tier.jpg"
+                            alt="Biblioteca molecular GL PRO — prateleira com 29 ativos de reconstrução capilar no estúdio Jo Manto"
+                            class="gl-pro-vitrine__img"
+                            width="1200"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+                    <figcaption class="gl-pro-vitrine__caption">
+                        <span class="gl-pro-vitrine__caption-label">Reconstrução Premium</span>
+                        <span class="gl-pro-vitrine__caption-desc">Biblioteca completa · <span id="gl-pro-actives-count">29</span> ativos moleculares</span>
+                    </figcaption>
+                </figure>
+                <article class="gl-pro-arsenal__panel">
+                    <span class="gl-pro-kicker">Arsenal Molecular · GL PRO</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-espresso leading-tight mb-5">29 ativos. Uma engenharia de precisão para o seu fio.</h2>
+                    <p class="gl-pro-lede text-sm font-light leading-relaxed mb-8">
+                        Não trabalhamos com protocolo genérico. O estúdio Jo Manto cruza histórico, sintomas e clima da sua região com a biblioteca GL PRO para formular a reposição exata que o fio pede no momento.
+                    </p>
+                    <a href="#mapeamento" class="btn-cta-amber">Iniciar Mapeamento Capilar</a>
+                    <p class="type-body type-body--sm type-body--secondary mt-4">Triagem gratuita · cerca de 3 minutos · sem compromisso</p>
+                </article>
+            </div>
+            <div class="text-center mb-10">
+                <span class="type-kicker type-kicker--taupe mb-4 block">Linha Profissional</span>
+                <h3 class="font-serif text-2xl md:text-3xl text-espresso mb-4">GL PRO</h3>
                 <p class="font-light text-espresso/65 text-sm md:text-base max-w-xl mx-auto" id="gl-pro-tagline"></p>
             </div>
-            <div class="relative mb-16 py-4 border-y border-mist overflow-hidden">
+            <div class="relative mb-12 py-4 gl-pro-marquee-band overflow-hidden">
                 <div class="animate-marquee" id="gl-pro-marquee" aria-hidden="true"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gl-pro-categories"></div>
@@ -195,64 +222,71 @@
         </div>
     </section>
 
-    <section class="py-32 px-6 bg-canvas overflow-hidden">
-        <div class="max-w-6xl mx-auto reveal">
+    <section class="py-32 bg-canvas testimonials-section">
+        <div class="max-w-6xl mx-auto px-6 reveal">
             <div class="text-center mb-16">
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-4">Resultados Reais</h2>
                 <p class="text-sm font-light text-taupe uppercase tracking-widest">Depoimentos de Terapia</p>
             </div>
-            <div class="testimonials-rail testimonials-rail--canvas" data-testimonials-rail>
-                <div class="testimonials-track flex gap-6 overflow-x-auto hide-scrollbar pb-10 snap-x snap-mandatory">
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-linen border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+        </div>
+        <div class="testimonials-rail testimonials-rail--canvas testimonials-rail--bleed" data-testimonials-rail>
+            <div class="testimonials-track hide-scrollbar">
+                <div class="testimonials-card">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Dano químico</span>
                             <span class="proof-chip">Quebra</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"Meu cabelo estava desmanchando por causa de químicas antigas. A engenharia de ativos que a Jo prescreveu devolveu a espessura e o brilho já na primeira sessão. Mãos de fada!"</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Camila R.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: brilho e resistência</p>
+                        <p class="testimonial-card__quote">"Meu cabelo estava desmanchando por causa de químicas antigas. A engenharia de ativos que a Jo prescreveu devolveu a espessura e o brilho já na primeira sessão. Mãos de fada!"</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Camila R.</p>
+                            <p class="testimonial-result">Resultado percebido: brilho e resistência</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-linen border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+                <div class="testimonials-card">
+                    <div class="testimonial-card testimonial-card--featured">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Diagnóstico</span>
                             <span class="proof-chip">Porosidade</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"O diagnóstico capilar mostrou coisas que eu nunca percebi. Entendi pela primeira vez o que meu fio realmente precisava — e não era o que eu imaginava."</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Sofia M.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: clareza no cuidado</p>
+                        <p class="testimonial-card__quote">"O diagnóstico capilar mostrou coisas que eu nunca percebi. Entendi pela primeira vez o que meu fio realmente precisava — e não era o que eu imaginava."</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Sofia M.</p>
+                            <p class="testimonial-result">Resultado percebido: clareza no cuidado</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-card flex-none w-[85vw] md:w-[400px] snap-center">
-                    <div class="bg-linen border border-mist p-8 shadow-[0_8px_30px_rgb(61,56,53,0.04)] h-full flex flex-col justify-between rounded-sm">
-                        <div class="flex flex-wrap gap-2 mb-6">
+                <div class="testimonials-card">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__chips">
                             <span class="proof-chip">Frizz</span>
                             <span class="proof-chip">Hidratação</span>
                         </div>
-                        <p class="font-serif italic text-lg text-espresso leading-relaxed mb-8">"Parei de brigar com o frizz todo dia. Depois do protocolo, o toque mudou e finalmente consegui manter o cabelo bonito entre uma lavagem e outra."</p>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-taupe font-medium">— Juliana P.</p>
-                            <p class="text-[10px] uppercase tracking-widest text-clay mt-2">Resultado percebido: fio mais obediente</p>
+                        <p class="testimonial-card__quote">"Parei de brigar com o frizz todo dia. Depois do protocolo, o toque mudou e finalmente consegui manter o cabelo bonito entre uma lavagem e outra."</p>
+                        <div class="testimonial-card__footer">
+                            <p class="testimonial-card__attribution">— Juliana P.</p>
+                            <p class="testimonial-result">Resultado percebido: fio mais obediente</p>
                         </div>
                     </div>
                 </div>
-                </div>
-                <p class="testimonials-scroll-hint" aria-hidden="true">Arraste para ler <span aria-hidden="true">→</span></p>
-                <div class="testimonials-dots" aria-label="Navegação dos depoimentos"></div>
             </div>
+            <p class="testimonials-scroll-hint" aria-hidden="true">Arraste para ler <span aria-hidden="true">→</span></p>
+            <div class="testimonials-dots" aria-label="Navegação dos depoimentos"></div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-blush border-t border-mist" id="investimento">
+    <section class="ink-band ink-band--compact" aria-label="Próximo passo Jo Manto">
+        <div class="max-w-4xl mx-auto text-center px-6 reveal">
+            <p class="ink-band__quote ink-band__quote--compact">"O protocolo só começa depois da leitura do fio."</p>
+            <p class="ink-band__attrib">Jo Manto · Terapias Capilares</p>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-surface-pure border-t border-mist" id="investimento">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-12">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-champagne mb-4 block">Investimento</span>
+                <span class="route-kicker">Investimento</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Engenharia de Ativos</h2>
                 <p class="text-sm text-taupe text-center font-light leading-relaxed max-w-2xl mx-auto">
                     O protocolo é escolhido depois da leitura do fio. Isso evita excesso de produto, cronograma genérico e promessa que não conversa com o dano real.
@@ -276,9 +310,9 @@
                     </div>
                     <a href="#" data-investment-cta target="_blank" rel="noopener noreferrer" class="pricing-tier-cta pricing-tier-cta--secondary">Agendar Sessão Avulsa</a>
                 </div>
-                <div class="editorial-card pricing-tier p-8 bg-canvas" data-investment-page="terapias" data-investment-tier="cycle">
+                <div class="editorial-card pricing-tier p-8" data-investment-page="terapias" data-investment-tier="cycle">
                     <div class="pricing-tier-body">
-                        <span data-investment-badge class="pricing-tier-badge hidden">Mais indicado</span>
+                        <span data-investment-badge class="pricing-tier-badge hidden">Mais escolhido</span>
                         <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-start mb-8">
                             <div>
                                 <h4 class="font-serif text-2xl text-espresso">Ciclo de Reconstrução Inteligente</h4>
@@ -290,9 +324,9 @@
                                 </ul>
                             </div>
                             <div class="text-left md:text-right bg-blush p-5 rounded-sm border border-mist">
-                                <span class="text-[10px] text-clay uppercase tracking-widest block mb-1">Investimento Mensalizado</span>
+                                <span class="type-kicker type-kicker--clay mb-1">Investimento Mensalizado</span>
                                 <span class="text-2xl font-serif text-espresso block">6x de R$ 199,50</span>
-                                <span class="text-[10px] text-taupe mt-2 block font-light">Total R$ 1.197 (ou R$ 997 à vista/PIX)</span>
+                                <span class="type-kicker type-kicker--secondary mt-2 block">Total R$ 1.197 (ou R$ 997 à vista/PIX)</span>
                             </div>
                         </div>
                     </div>
@@ -306,13 +340,13 @@
     <section class="py-24 px-6 bg-linen border-t border-mist" id="guias">
         <div class="max-w-3xl mx-auto reveal">
             <div class="text-center mb-12">
-                <span class="text-[10px] uppercase tracking-[0.3em] text-taupe mb-4 block">Guias Capilares</span>
+                <span class="type-kicker type-kicker--taupe mb-4 block">Guias Capilares</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-espresso mb-5">Leitura antes do protocolo</h2>
                 <p class="text-sm font-light text-espresso/65 leading-relaxed">Conteúdo editorial para orientar decisões com mais clareza — sem substituir a avaliação presencial.</p>
             </div>
             <div class="space-y-8">
                 <article class="editorial-guide border border-mist bg-canvas p-6 md:p-8" id="guia-quebra-porosidade">
-                    <span class="text-[10px] uppercase tracking-[0.28em] text-clay mb-3 block">Leitura do fio</span>
+                    <span class="type-kicker type-kicker--clay mb-3">Leitura do fio</span>
                     <h3 class="font-serif text-2xl text-espresso mb-4">Quebra ou porosidade: como saber a diferença?</h3>
                     <div class="space-y-4 text-sm font-light text-taupe leading-relaxed">
                         <p>Quebra e porosidade costumam aparecer juntas, mas não pedem a mesma resposta. A quebra costuma indicar perda de resistência e massa no fio; a porosidade revela dificuldade em reter água e lipídios na cutícula.</p>
@@ -321,7 +355,7 @@
                     </div>
                 </article>
                 <article class="editorial-guide border border-mist bg-canvas p-6 md:p-8" id="guia-cronograma">
-                    <span class="text-[10px] uppercase tracking-[0.28em] text-clay mb-3 block">Rotina real</span>
+                    <span class="type-kicker type-kicker--clay mb-3">Rotina real</span>
                     <h3 class="font-serif text-2xl text-espresso mb-4">Por que cronograma genérico costuma falhar</h3>
                     <div class="space-y-4 text-sm font-light text-taupe leading-relaxed">
                         <p>Hidratação, nutrição e reconstrução só funcionam quando conversam com o seu ciclo de lavagem, clima e histórico do fio. Um calendário fixo ignora quando o cabelo realmente pede reposição.</p>
@@ -329,7 +363,7 @@
                     </div>
                 </article>
                 <article class="editorial-guide border border-mist bg-canvas p-6 md:p-8" id="guia-mapeamento">
-                    <span class="text-[10px] uppercase tracking-[0.28em] text-clay mb-3 block">Triagem</span>
+                    <span class="type-kicker type-kicker--clay mb-3">Triagem</span>
                     <h3 class="font-serif text-2xl text-espresso mb-4">O que o mapeamento digital prepara — e o que não substitui</h3>
                     <div class="space-y-4 text-sm font-light text-taupe leading-relaxed">
                         <p>O mapeamento capilar digital organiza histórico químico, sintomas, rotina e clima da sua região. Ele acelera a conversa e ajuda você a chegar ao estúdio com contexto.</p>
@@ -385,11 +419,11 @@
 
     <footer id="site-footer"></footer>
 
-    <div class="floating-cta-wrap fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-sm z-50 flex flex-col items-center">
-        <span id="cta-badge" class="floating-cta-badge text-[9px] uppercase tracking-widest text-taupe bg-canvas/80 backdrop-blur-sm px-3 py-1 rounded-t-lg mb-[-4px] z-10 font-medium border border-mist">Diagnóstico Personalizado</span>
-        <a id="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
-           class="floating-cta block w-full bg-espresso text-canvas text-center py-4 rounded-lg text-xs md:text-sm uppercase tracking-widest font-medium shadow-[0_8px_30px_rgb(61,56,53,0.15)] hover:bg-espresso/90 transition-all duration-300 relative z-20">
-            <span id="cta-label">Agendar Minha Avaliação Capilar</span>
+    <div class="floating-cta-wrap floating-cta-wrap--terapias floating-cta-wrap--dormant" data-funnel-phase="triage">
+        <span id="cta-badge" class="floating-cta-badge floating-cta-badge--route">Gratuito · ~3 min</span>
+        <a id="whatsapp-link" href="#mapeamento"
+           class="floating-cta floating-cta--route block w-full text-center py-4 rounded-lg text-xs md:text-sm uppercase tracking-widest font-medium shadow-[0_8px_30px_rgb(61,56,53,0.15)] hover:bg-espresso/90 transition-all duration-300 relative z-20">
+            <span id="cta-label">Iniciar Triagem Gratuita</span>
         </a>
     </div>
 
@@ -399,6 +433,67 @@
         document.addEventListener('DOMContentLoaded', () => {
             initPage('terapias');
             renderGlProSection();
+            renderTerapiasStudioGallery();
+
+            const floating = document.querySelector('.floating-cta-wrap--terapias');
+            const link = document.getElementById('whatsapp-link');
+            const label = document.getElementById('cta-label');
+            const badge = document.getElementById('cta-badge');
+            const investimento = document.getElementById('investimento');
+            if (!floating || !link || !label || !badge || !investimento) return;
+
+            const pageConfig = SITE_CONFIG.pages.terapias;
+            const commercial = {
+                href: `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(pageConfig.whatsappMessage)}`,
+                label: pageConfig.ctaLabel,
+                badge: pageConfig.ctaBadge,
+                external: true
+            };
+
+            const triage = {
+                href: '#mapeamento',
+                label: 'Iniciar Triagem Gratuita',
+                badge: 'Gratuito · ~3 min',
+                external: false
+            };
+
+            const applyPhase = (phase) => {
+                const config = phase === 'commercial' ? commercial : triage;
+                link.href = config.href;
+                label.textContent = config.label;
+                badge.textContent = config.badge;
+                floating.dataset.funnelPhase = phase;
+                if (config.external) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                } else {
+                    link.removeAttribute('target');
+                    link.removeAttribute('rel');
+                }
+            };
+
+            applyPhase('triage');
+
+            const hero = document.getElementById('hero');
+            const revealAfterScroll = () => {
+                if (!hero) {
+                    floating.classList.remove('floating-cta-wrap--dormant');
+                    return;
+                }
+                const heroBottom = hero.offsetTop + hero.offsetHeight;
+                const pastHero = window.scrollY > heroBottom - 80;
+                floating.classList.toggle('floating-cta-wrap--dormant', !pastHero);
+            };
+
+            revealAfterScroll();
+            window.addEventListener('scroll', revealAfterScroll, { passive: true });
+
+            const investimentoObserver = new IntersectionObserver((entries) => {
+                const showCommercial = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.2);
+                applyPhase(showCommercial ? 'commercial' : 'triage');
+            }, { threshold: [0, 0.2, 0.45] });
+
+            investimentoObserver.observe(investimento);
         });
     </script>
 </body>
