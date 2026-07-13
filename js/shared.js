@@ -437,19 +437,24 @@ function applyJoImage() {
 
 function getMapeamentoFrameMinHeight() {
     const mobile = window.matchMedia('(max-width: 767px)').matches;
-    const ratio = mobile ? 0.78 : 0.72;
-    return Math.max(Math.round(window.innerHeight * ratio), mobile ? 520 : 640);
+    const section = document.getElementById('mapeamento');
+    const isIntro = section?.classList.contains('mapeamento-chrome-intro');
+    if (isIntro) {
+        return mobile ? 440 : 460;
+    }
+    const ratio = mobile ? 0.7 : 0.58;
+    return Math.max(Math.round(window.innerHeight * ratio), mobile ? 480 : 520);
 }
 
 function getMapeamentoFrameMaxHeight() {
-    return Math.min(680, Math.round(window.innerHeight * 0.85));
+    const mobile = window.matchMedia('(max-width: 767px)').matches;
+    return Math.min(mobile ? 640 : 600, Math.round(window.innerHeight * (mobile ? 0.82 : 0.72)));
 }
 
 function syncMapeamentoFrameHeight(iframe, section, contentHeight, mode) {
-    const mobileImmersive = section.classList.contains('mapeamento-immersive')
-        && window.matchMedia('(max-width: 767px)').matches;
+    const immersive = section.classList.contains('mapeamento-immersive');
 
-    if (mobileImmersive) {
+    if (immersive) {
         iframe.style.height = '100%';
         iframe.style.minHeight = '0';
         iframe.style.maxHeight = 'none';
@@ -500,6 +505,11 @@ function initMapeamentoEmbed() {
         const mode = section.classList.contains('mapeamento-chrome-complete') ? 'complete' : 'funnel';
         syncMapeamentoFrameHeight(iframe, section, lastContentHeight, mode);
     });
+
+    const embedWrap = section.querySelector('.mapeamento-embed-wrap');
+    embedWrap?.addEventListener('pointerdown', () => {
+        section.classList.add('mapeamento-embed-engaged');
+    }, { passive: true });
 
     syncMapeamentoFrameHeight(iframe, section, 0, 'funnel');
 

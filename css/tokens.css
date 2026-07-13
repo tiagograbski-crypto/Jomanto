@@ -55,6 +55,10 @@
     --jm-hero-height-desktop: 82svh;
     --jm-testimonial-card-width: min(86vw, 25rem);
     --jm-testimonial-rail-gap: 1.25rem;
+    --jm-section-primary: clamp(3.5rem, 7vw, 5.5rem);
+    --jm-section-secondary: clamp(2.5rem, 5vw, 4rem);
+    --jm-section-tertiary: clamp(2rem, 3.5vw, 3rem);
+    --jm-hero-height-mobile-terapias: 70svh;
 }
 
 body.jo-manto-skin {

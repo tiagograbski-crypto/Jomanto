@@ -60,8 +60,14 @@ const SITE_CONFIG = {
         terapias: {
             kicker: 'Base técnica',
             title: 'Cor e cuidado com formação de referência',
-            lede: 'Protocolos GL PRO e leitura do fio apoiados em colorimetria e formação institucional — para prescrever com critério, não com receita genérica.'
+            lede: 'Protocolos GL PRO e leitura do fio apoiados em colorimetria e formação institucional — para prescrever com critério, não com receita genérica.',
+            bandLabel: 'Colorimetria · Academia Longueiras'
         }
+    },
+    credentialsBandCopy: {
+        visagismo: 'Corte, cor e penteado com referências nacionais',
+        terapias: 'Leitura de cor e formação institucional',
+        hub: 'Formação com mestres da indústria'
     },
     pages: {
         hub: {
@@ -307,9 +313,26 @@ function renderCredentialsSection(containerId) {
 
     const page = container.dataset.credentialsPage || 'hub';
     const variant = container.dataset.credentialsVariant || 'full';
+    const layout = container.dataset.credentialsLayout || 'grid';
     const copy = SITE_CONFIG.credentialsCopy?.[page] || SITE_CONFIG.credentialsCopy.hub;
+    const bandLabel = SITE_CONFIG.credentialsBandCopy?.[page] || SITE_CONFIG.credentialsBandCopy.hub;
     const items = SITE_CONFIG.credentials.filter((item) => item.pages.includes(page));
     if (!items.length) return;
+
+    if (layout === 'band') {
+        const pillsHtml = items.map((item) => `
+            <article class="credential-pill" role="listitem">
+                <span class="credential-pill__mentor">${item.mentor}</span>
+                <span class="credential-pill__discipline">${item.discipline}</span>
+            </article>
+        `).join('');
+
+        container.innerHTML = `
+            <p class="credibility-band__formacao-label type-kicker type-kicker--secondary text-center">${bandLabel}</p>
+            <div class="credentials-rail hide-scrollbar" role="list">${pillsHtml}</div>
+        `;
+        return;
+    }
 
     const showHeader = container.dataset.credentialsHeader !== 'false';
     const headerHtml = showHeader && copy ? `
