@@ -108,11 +108,17 @@ const SITE_CONFIG = {
         terapias: {
             session: {
                 label: 'Sessão de Reposição Avulsa',
+                price: 'R$ 249',
                 cta: 'Agendar Sessão Avulsa',
                 whatsappMessage: 'Olá, Jo Manto. Gostaria de agendar uma sessão de reposição avulsa e entender qual leitura capilar faz sentido para mim.'
             },
             cycle: {
                 label: 'Ciclo de Reconstrução Inteligente',
+                scope: '4 sessões · intervalo da sua lavagem',
+                installments: '6× de R$ 199,90',
+                totalInstallments: 'R$ 1.199',
+                pixPrice: 'R$ 997',
+                pixSavings: 'R$ 202',
                 cta: 'Quero o Ciclo Completo',
                 featured: true,
                 whatsappMessage: 'Olá, Jo Manto. Tenho interesse no Ciclo de Reconstrução Inteligente e gostaria de reservar minha vaga no protocolo completo.'
