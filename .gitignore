@@ -1,3 +1,11 @@
-.firebase/
 *.log
 node_modules/
+
+# Arquivo local (não publicar no hosting)
+images/arquivo/
+images/tiers.png
+images/banner ozonio.jpg
+images/capa banner 10.jpg
+images/capa banner 11.jpg
+images/jo manto .jpeg
+images/WhatsApp Image 2026-07-02 at 13.36.30.jpeg

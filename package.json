@@ -2,7 +2,7 @@
   "name": "projeto-jo-manto",
   "version": "1.0.0",
   "private": true,
-  "description": "Site estático Jo Manto + módulo mapeamento capilar",
+  "description": "Site estático Jo Manto + módulo mapeamento capilar (servir pasta raiz no hosting)",
   "scripts": {
     "start": "npx --yes serve . -l 3456",
     "dev": "npx --yes serve . -l 3456"
